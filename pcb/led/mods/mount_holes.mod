@@ -1,0 +1,22 @@
+PCBNEW-LibModule-V1  Wed 28 Dec 2011 01:45:39 PM PST
+# encoding utf-8
+$INDEX
+2-56 Mount Holes
+$EndINDEX
+$MODULE 2-56 Mount Holes
+Po 0 0 0 15 4EFB8DDA 00000000 ~~
+Li 2-56 Mount Holes
+Sc 00000000
+AR 
+Op 0 0 0
+T0 0 -1000 394 394 0 39 N I 21 N "2-56 Mount Holes"
+T1 0 1250 394 394 0 39 N V 21 N "VAL**"
+$PAD
+Sh "1" C 1339 1339 0 0 0
+Dr 960 0 0
+At STD N 00E0FFFF
+Ne 0 ""
+Po 0 0
+$EndPAD
+$EndMODULE  2-56 Mount Holes
+$EndLIBRARY

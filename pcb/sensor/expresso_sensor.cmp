@@ -1,0 +1,94 @@
+Cmp-Mod V01 Created by CvPCB (2011-aug-04)-testing date = Sat 11 Feb 2012 12:26:34 PM PST
+
+BeginCmp
+TimeStamp = /4EFBA342;
+Reference = C1;
+ValeurCmp = 0.1uF;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F36C811;
+Reference = C2;
+ValeurCmp = 0.1uF;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F36C826;
+Reference = C3;
+ValeurCmp = 0.1uF;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F36C81F;
+Reference = C4;
+ValeurCmp = 0.1uF;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F36C831;
+Reference = C5;
+ValeurCmp = 0.1uF;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /4EFBC9E1;
+Reference = P1;
+ValeurCmp = CONN_2;
+IdModule  = SMT_PWR_JACK_1p7;
+EndCmp
+
+BeginCmp
+TimeStamp = /4EFBA2DA;
+Reference = P2;
+ValeurCmp = CONN_2;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4EFBA297;
+Reference = U1;
+ValeurCmp = TAOS_TSL1406R;
+IdModule  = TAOS_TSL1406R;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F36C812;
+Reference = U2;
+ValeurCmp = TAOS_TSL1406R;
+IdModule  = TAOS_TSL1406R;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F36C827;
+Reference = U3;
+ValeurCmp = TAOS_TSL1406R;
+IdModule  = TAOS_TSL1406R;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F36C81E;
+Reference = U4;
+ValeurCmp = TAOS_TSL1406R;
+IdModule  = TAOS_TSL1406R;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F36C832;
+Reference = U5;
+ValeurCmp = TAOS_TSL1406R;
+IdModule  = TAOS_TSL1406R;
+EndCmp
+
+BeginCmp
+TimeStamp = /4EFBA2A4;
+Reference = U6;
+ValeurCmp = MAPLE_MINI;
+IdModule  = maple_mini_smt;
+EndCmp
+
+EndListe

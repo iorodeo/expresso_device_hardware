@@ -1,0 +1,18 @@
+syntax: glob
+*.pyc
+*~
+*.o
+*.egg-info
+*.swp
+*.scad
+*.stl
+*.pkl
+*.komodo*
+*.egg-info
+.DS_Store
+build
+dist
+.komodo*
+deb_dist
+stl
+dxf

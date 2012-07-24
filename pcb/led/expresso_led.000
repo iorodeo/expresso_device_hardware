@@ -1,6 +1,6 @@
-PCBNEW-BOARD Version 1 date Wed 15 Feb 2012 11:26:22 AM PST
+PCBNEW-BOARD Version 1 date Tue 24 Jul 2012 03:46:14 PM PDT
 
-# Created by Pcbnew(2011-07-19)-testing
+# Created by Pcbnew(2011-05-25)-stable
 
 $GENERAL
 encoding utf-8
@@ -21,7 +21,7 @@ $EndGENERAL
 $SHEETDESCR
 Sheet A4 11700 8267
 Title ""
-Date "15 feb 2012"
+Date "24 jul 2012"
 Rev ""
 Comp ""
 Comment1 ""
@@ -59,7 +59,7 @@ PadSize 1339 1339
 PadDrill 960
 Pad2MaskClearance 100
 AuxiliaryAxisOrg 0 0
-PcbPlotParams (pcbplotparams (layerselection 284196865) (usegerberextensions true) (excludeedgelayer true) (linewidth 60) (plotframeref false) (viasonmask false) (mode 1) (useauxorigin false) (hpglpennumber 1) (hpglpenspeed 20) (hpglpendiameter 15) (hpglpenoverlay 0) (pscolor true) (psnegative false) (psa4output false) (plotreference true) (plotvalue true) (plotothertext true) (plotinvisibletext false) (padsonsilk false) (subtractmaskfromsilk false) (outputformat 1) (mirror false) (drillshape 1) (scaleselection 1) (outputdirectory gerber_v1p0/))
+PcbPlotParams (pcbplotparams (layerselection 284196865) (usegerberextensions true) (excludeedgelayer true) (linewidth 60) (plotframeref false) (viasonmask false) (mode 1) (useauxorigin false) (hpglpennumber 1) (hpglpenspeed 20) (hpglpendiameter 15) (hpglpenoverlay 0) (pscolor true) (psnegative false) (psa4output false) (plotreference true) (plotvalue true) (plotothertext true) (plotinvisibletext false) (padsonsilk false) (subtractmaskfromsilk false) (outputformat 1) (mirror false) (drillshape 1) (scaleselection 1) (outputdirectory gerb_v1p0/))
 $EndSETUP
 
 $EQUIPOT
@@ -3423,7 +3423,7 @@ Po 0 0
 $EndPAD
 $EndMODULE  2-56
 $MODULE 2-56
-Po 43700 29350 0 15 4F3C05E6 4F3C046E ~~
+Po 43700 29350 0 15 500F25A3 4F3C046E ~~
 Li 2-56
 Sc 4F3C046E
 AR 2-56
@@ -3435,11 +3435,11 @@ Sh "1" C 1339 1339 0 0 0
 Dr 960 0 0
 At STD N 00E0FFFF
 Ne 0 ""
-Po 0 0
+Po 300 0
 $EndPAD
 $EndMODULE  2-56
 $MODULE 2-56
-Po 43700 51450 0 15 4F3C05D6 4F3C0473 ~~
+Po 43700 51450 0 15 500F258B 4F3C0473 ~~
 Li 2-56
 Sc 4F3C0473
 AR 2-56
@@ -3451,7 +3451,7 @@ Sh "1" C 1339 1339 0 0 0
 Dr 960 0 0
 At STD N 00E0FFFF
 Ne 0 ""
-Po 0 0
+Po 300 0
 $EndPAD
 $EndMODULE  2-56
 $DRAWSEGMENT
@@ -3474,7 +3474,7 @@ $TEXTPCB
 Te "IO Rodeo"
 nl "5 channel capillary LED v 1.0"
 Po 35100 30000 600 800 120 0
-De 21 1 0 Normal C
+De 21 1 0 Normal
 $EndTEXTPCB
 $TRACK
 Po 0 29508 33602 29508 36398 200 -1
@@ -6041,20 +6041,20 @@ $POLYSCORNERS
 47963 52027 0 0
 48025 51965 0 0
 48025 52125 0 0
-44324 52125 0 0
-44479 51971 0 0
-44619 51634 0 0
-44619 51268 0 0
-44479 50930 0 0
-44221 50671 0 0
-43884 50531 0 0
-43518 50531 0 0
-43180 50671 0 0
-42921 50929 0 0
-42781 51266 0 0
-42781 51632 0 0
-42921 51970 0 0
-43075 52125 0 0
+44624 52125 0 0
+44779 51971 0 0
+44919 51634 0 0
+44919 51268 0 0
+44779 50930 0 0
+44521 50671 0 0
+44184 50531 0 0
+43818 50531 0 0
+43480 50671 0 0
+43221 50929 0 0
+43081 51266 0 0
+43081 51632 0 0
+43221 51970 0 0
+43375 52125 0 0
 38099 52125 0 0
 38099 44500 0 0
 38099 44401 0 0
@@ -6288,20 +6288,20 @@ $POLYSCORNERS
 26919 29168 0 0
 26779 28830 0 0
 26624 28675 0 0
-43075 28675 0 0
-42921 28829 0 0
-42781 29166 0 0
-42781 29532 0 0
-42921 29870 0 0
-43179 30129 0 0
-43516 30269 0 0
-43882 30269 0 0
-44220 30129 0 0
-44479 29871 0 0
-44619 29534 0 0
-44619 29168 0 0
-44479 28830 0 0
-44324 28675 0 0
+43375 28675 0 0
+43221 28829 0 0
+43081 29166 0 0
+43081 29532 0 0
+43221 29870 0 0
+43479 30129 0 0
+43816 30269 0 0
+44182 30269 0 0
+44520 30129 0 0
+44779 29871 0 0
+44919 29534 0 0
+44919 29168 0 0
+44779 28830 0 0
+44624 28675 0 0
 93375 28675 0 0
 93221 28829 0 0
 93081 29166 0 0

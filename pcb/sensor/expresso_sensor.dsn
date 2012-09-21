@@ -1,9 +1,9 @@
-(pcb /home/jo/repos/capillary_sensor/sensor_five_chan/capillary_sensor_pcb.dsn
+(pcb /home/cisco/Work/expresso_hardware/pcb/sensor/expresso_sensor.dsn
   (parser
     (string_quote ")
     (space_in_quoted_tokens on)
     (host_cad "Kicad's PCBNEW")
-    (host_version "(2011-07-19)-testing")
+    (host_version "(2011-05-25)-stable")
   )
   (resolution mil 10)
   (unit mil)
@@ -21,7 +21,8 @@
       )
     )
     (boundary
-      (path pcb 0  9500 -5245  9500 -2835  2500 -2835  2500 -5245  9500 -5245)
+      (path pcb 0  8968.5 -4212.6  8968.5 -1259.8  1968.5 -1259.8  1968.5 -4212.6
+            8968.5 -4212.6)
     )
     (via "Via[0-1]_35:25_mil" "Via[0-1]_35:0_mil")
     (rule
@@ -32,37 +33,75 @@
     )
   )
   (placement
+    (component "2-56"
+      (place M8 7782 -4261.8 front 0)
+    )
+    (component "2-56::1"
+      (place M6 5833.2 -4289.3 front 0)
+    )
+    (component "2-56::2"
+      (place M4 3868.6 -4289.3 front 0)
+    )
+    (component "2-56::3"
+      (place M3 3766.2 -1218.4 front 0)
+    )
+    (component "2-56::4"
+      (place M5 5730.8 -1218.4 front 0)
+    )
+    (component "2-56::5"
+      (place M7 7679.6 -1190.9 front 0)
+    )
     (component TAOS_TSL1406R
-      (place U5 8750 -4040.4 front 0 (PN TAOS_TSL1406R))
-      (place U4 7750 -4040.4 front 0 (PN TAOS_TSL1406R))
-      (place U3 6750 -4040.4 front 0 (PN TAOS_TSL1406R))
-      (place U2 5750 -4040.4 front 0 (PN TAOS_TSL1406R))
-      (place U1 4750 -4040.4 front 0 (PN TAOS_TSL1406R))
+      (place U5 8218.5 -2736.2 front 0 (PN TAOS_TSL1406R))
+      (place U4 7218.5 -2736.2 front 0 (PN TAOS_TSL1406R))
+      (place U3 6218.5 -2736.2 front 0 (PN TAOS_TSL1406R))
+      (place U2 5218.5 -2736.2 front 0 (PN TAOS_TSL1406R))
+      (place U1 4218.5 -2736.2 front 0 (PN TAOS_TSL1406R))
     )
     (component SMT_PWR_JACK_1p7
-      (place P1 3031.5 -3031.5 front 270 (PN CONN_2))
+      (place P1 2480.3 -1712.6 front 270 (PN CONN_2))
     )
     (component SM0603
-      (place C1 5140 -4640 front 90 (PN 0.1uF))
-      (place C2 6140 -4640 front 90 (PN 0.1uF))
-      (place C3 7140 -4640 front 90 (PN 0.1uF))
-      (place C4 8140 -4640 front 90 (PN 0.1uF))
-      (place C5 9140 -4640 front 90 (PN 0.1uF))
+      (place C1 4608.5 -3348.7 back 90 (PN 0.1uF))
+      (place C2 5608.5 -3348.7 back 90 (PN 0.1uF))
+      (place C3 6608.5 -3348.7 back 90 (PN 0.1uF))
+      (place C4 7608.5 -3348.7 back 90 (PN 0.1uF))
+      (place C5 8608.5 -3348.7 back 90 (PN 0.1uF))
     )
     (component PIN_ARRAY_2X1
-      (place P2 3000 -4040 front 90 (PN CONN_2))
+      (place P2 2362.2 -2775.6 front 90 (PN CONN_2))
     )
     (component maple_mini_smt
-      (place U6 3750 -3860 front 0 (PN MAPLE_MINI))
+      (place U6 3228.3 -2559.1 front 0 (PN MAPLE_MINI))
     )
-    (component "2-56"
-      (place M1 2600 -2935 front 0)
-      (place M2 2600 -5145 front 0)
-      (place M3 9400 -5145 front 0)
-      (place M4 9400 -2935 front 0)
+    (component "2-56::6"
+      (place M1 2068.5 -1643.7 front 0)
+      (place M9 8868.5 -1643.7 front 0)
+    )
+    (component "2-56::7"
+      (place M2 2068.5 -3853.7 front 0)
+      (place M10 8868.5 -3853.7 front 0)
     )
   )
   (library
+    (image "2-56"
+      (pin Round[A]Pad_133.9_mil 1 -63.5 149.2)
+    )
+    (image "2-56::1"
+      (pin Round[A]Pad_133.9_mil 1 -114.7 176.7)
+    )
+    (image "2-56::2"
+      (pin Round[A]Pad_133.9_mil 1 -145.2 176.7)
+    )
+    (image "2-56::3"
+      (pin Round[A]Pad_133.9_mil 1 -42.8 -141.4)
+    )
+    (image "2-56::4"
+      (pin Round[A]Pad_133.9_mil 1 -12.3 -141.4)
+    )
+    (image "2-56::5"
+      (pin Round[A]Pad_133.9_mil 1 38.9 -168.9)
+    )
     (image TAOS_TSL1406R
       (outline (path signal 15  200 -600  320 -600))
       (outline (path signal 15  200 -500  320 -500))
@@ -181,8 +220,11 @@
       (pin Rect[T]Pad_78.7x39.4_mil 39 234.6 850)
       (pin Rect[T]Pad_78.7x39.4_mil 40 365 950)
     )
-    (image "2-56"
-      (pin Round[A]Pad_133.9_mil 1 0 0)
+    (image "2-56::6"
+      (pin Round[A]Pad_133.9_mil 1 0 8.3)
+    )
+    (image "2-56::7"
+      (pin Round[A]Pad_133.9_mil 1 0 16.7)
     )
     (padstack Round[A]Pad_133.9_mil
       (shape (circle Front 133.9))

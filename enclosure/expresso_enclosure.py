@@ -33,12 +33,6 @@ class Expresso_Enclosure(Basic_Enclosure):
         self.make_led_pcb()
         self.make_sensor_pcb()
         self.make_plunger_strip()
-        #self.make_vial_holder_tap_holes()
-        #self.make_vial_holder()
-        #self.make_vial_holder_spacer()
-        #self.make_vial()
-        #self.make_capillary_clamp_thru_holes()
-        #self.make_capillary_clamp()
 
     #########################################
     # Additions to the Basic Enclosure
@@ -741,11 +735,9 @@ class Expresso_Enclosure(Basic_Enclosure):
 
     def get_box_projection(self,show_ref_cube=True, spacing_factor=4):
         """
-        Get 2D projected layout of parts for laser cutting.
+        Get 2D projected layout of the enclosure 'box' parts for laser cutting.
         """
         parts_list = super(Expresso_Enclosure,self).get_projection(show_ref_cube,spacing_factor)
-        # Add plunger strip
-
         return parts_list
 
     def get_side_guide_projection(self,show_ref_cube=False,spacing_factor=2):
@@ -774,15 +766,6 @@ class Expresso_Enclosure(Basic_Enclosure):
             guide_plate_neg = Translate(guide_plate_neg,v=(-x_shift,-y_shift,0))
             guide_plate_neg = Projection(guide_plate_neg)
             parts_list.append(guide_plate_neg)
-
-        # Add reference cube
-        #ref_cube = Cube(size=(INCH2MM, INCH2MM, INCH2MM))   
-        #x_shift = 0.5*guide_x + 0.5*INCH2MM + spacing_factor*thickness
-        #ref_cube = Translate(ref_cube,v=(x_shift,0,0))
-        #ref_cube = Projection(ref_cube)
-        #if show_ref_cube:
-            #parts_list.append(ref_cube)
-
         return parts_list
 
 
@@ -840,3 +823,28 @@ class Expresso_Enclosure(Basic_Enclosure):
             parts_list.append(ref_cube)
         return parts_list
 
+    def get_plunger_strip_projection(self,show_ref_cube=False,spacing_factor=2):
+        """
+        Get 2D projected layout of the plunger strip for laser cutting.
+        """
+        parts_list = []
+        strip_x, strip_y, strip_z = self.params['plunger_strip_dimensions']
+        diff_x, diff_y, diff_z = self.params['diffuser_dimensions']
+        x,y,z = self.params['inner_dimensions']
+        
+        thickness = self.params['wall_thickness']
+        
+        # Add diffuser
+        x_shift = diff_x + .5*x + self.params['bottom_x_overhang'] + thickness + \
+                  3*15 + z + .5*strip_x
+        strip = Translate(self.plunger_strip,v=(x_shift,0,0))
+        parts_list.append(Projection(strip))
+
+        # Add reference cube
+        ref_cube = Cube(size=(INCH2MM, INCH2MM, INCH2MM))   
+        x_shift = 0.5*diff_x + 0.5*INCH2MM + spacing_factor*thickness
+        ref_cube = Translate(ref_cube,v=(-x_shift,0,0))
+        ref_cube = Projection(ref_cube)
+        if show_ref_cube:
+            parts_list.append(ref_cube)
+        return parts_list

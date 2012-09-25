@@ -33,7 +33,7 @@ params = {
         'lid2front_tabs'                     : (0.25,0.75),
         'top_x_overhang'                     : 1.5,
         'top_y_overhang'                     : 1.5,
-        'bottom_x_overhang'                  : 13.3,
+        'bottom_x_overhang'                  : 14.3,
         'bottom_y_overhang'                  : 1.*INCH2MM-5.65, 
         'lid_radius'                         : 1.5,  
         'standoff_diameter'                  : 0.1895*INCH2MM,
@@ -60,7 +60,7 @@ params = {
         'sensor_hole_offset'                 : 0.685,
         'sensor_mount_hole_diam'             : 0.11*INCH2MM, 
         'sensor_mount_hole_pos'              : 57.40, 
-        'plunger_thru_hole_diam'             : 4.2,
+        'plunger_thru_hole_diam'             : 6,
 
         # LED PCB parameters
         'led_pcb_dimensions'                 : (61.0, 7*25.4, 1.7),
@@ -96,7 +96,7 @@ params = {
         'diffuser_thru_hole_diam'            : 0.0890*INCH2MM,
 
         # Plunger strip parameters
-        'plunger_strip_dimensions'           : (8.,5.*INCH2MM,6.),
+        'plunger_strip_dimensions'           : (9.,5.*INCH2MM,6.),
         'plunger_strip_tap_hole_diam'        : .2010*INCH2MM,
         'plunger_strip_thru_hole_diam'       : .0890*INCH2MM,
 
@@ -110,7 +110,7 @@ if __name__ == '__main__':
     enclosure = Expresso_Enclosure(params)
     enclosure.make()
 
-    create_dxf=False
+    create_dxf=True
     
     part_assembly = enclosure.get_assembly(
             show_top=True,
@@ -144,11 +144,13 @@ if __name__ == '__main__':
     diffuser_projection = enclosure.get_diffuser_projection()
     top_guide_projection = enclosure.get_top_guide_projection()
     side_guide_projection = enclosure.get_side_guide_projection()
+    plunger_strip_projection = enclosure.get_plunger_strip_projection()
 
     projection_parts.extend(box_projection)
     projection_parts.extend(diffuser_projection)
     projection_parts.extend(top_guide_projection)
     projection_parts.extend(side_guide_projection)
+    projection_parts.extend(plunger_strip_projection)
     
     # Write assembly scad file
     prog_assembly = SCAD_Prog()
@@ -167,31 +169,28 @@ if __name__ == '__main__':
                     'front',
                     'back',
                     'ref_cube',
-                    'clamp',
                     'diffuser',
                     'guide_top',
                     'guide_side_pos_A',
                     'guide_side_neg_A',
-                    'guide_side_pos_B',
-                    'guide_side_neg_B',
+                    'plunger_strip'
                   ]
 
-    cnt = 0
     n = len(parts_names)
+    i = 0
     for part in projection_parts:       
-        cnt+=1
-        filename = 'scad/'+parts_names[cnt-1]+'.scad'
+        filename = 'scad/'+parts_names[i]+'.scad'
         prog_projection = SCAD_Prog()
         prog_projection.fn = 50
         prog_projection.add(part)
         prog_projection.write(filename)
-        print "wrote: "+filename
         scad_projection_files.append(filename)
-
+        i+=1
     # Create dxf files
     if create_dxf:
         for scad_name in scad_projection_files:
-            base_name, ext = os.path.splitext(scad_name)
-            dxf_name = '{0}.dxf'.format(base_name)
+            base_name,ext = os.path.splitext(scad_name)
+            dir_name,file_name = os.path.split(base_name)
+            dxf_name = 'dxf/{0}.dxf'.format(file_name)
             print '{0} -> {1}'.format(scad_name, dxf_name)
             subprocess.call(['openscad', '-x', dxf_name, scad_name])

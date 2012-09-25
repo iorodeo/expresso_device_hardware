@@ -1,0 +1,16 @@
+----------------------------------------------------------------------------------------------------
+Desc.                               Qty.    Part No.                    Company             Price($)
+----------------------------------------------------------------------------------------------------
+1/8" Matte Black Acrylic 8"x12"     1       25094-01                    Inventables         8.00
+1/16" Brushed Alum. on Black 4"x12" 1       25257-03                    Incentables         4.36
+1/16" Black Acrylic 12"x12"         1       24112-07                    Inventables         4.03
+1/16" White (.31T) Acrylic 4"x12"   1       24129-04                    Inventables         1.99
+1/16" Clear Acrylic 6"x4"           1       8560K178                    McMaster-Carr       0.84
+Aluminum Fem. Hex Standoffs 3/4"    4       91780A113                   McMaster-Carr       2.84
+Aluminum M/F. Hex Standoffs 3/16"   4       93505A513                   McMaster-Carr       2.68
+3/16" 2-56 Black Ox. Screws         44*     91249A046                   McMaster-Carr       2.14
+1/4" 2-56 Black Ox. Screws          4       91249A050                   McMaster-Carr       0.15
+1/8" x 1/4" Compressible Spring     5       LW025020125S                Lee Spring          12.0
+
+NOTES:
+*20 guides, 8 standoffs, 10 sensor PCB, 4 diffuser, 2 LED PCB

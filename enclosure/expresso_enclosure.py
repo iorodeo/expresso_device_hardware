@@ -542,23 +542,43 @@ class Expresso_Enclosure(Basic_Enclosure):
 
     def make_plunger_strip(self):
         strip_x, strip_y, strip_z = self.params['plunger_strip_dimensions']
-        diam = self.params['plunger_strip_tap_hole_diam']
+        diam = self.params['plunger_strip_etched_hole_diam']
         hole_list = []
-        pos_x = 0.
-        # Plunger holes
-        y_0 = self.get_y_values()[2]
-        for y_pos in self.get_y_values():
-            pos_y = y_pos - y_0
-            hole = (pos_x,pos_y,diam)
-            hole_list.append(hole)
         hole_x = 0
          
         # Mounting holes
-        diam = self.params['plunger_strip_thru_hole_diam']
+        diam = self.params['plunger_strip_tap_hole_diam']
         for i in [1,8,12,19]:
             hole_y = -.5*strip_y+i*.25*INCH2MM
             hole_list.append((hole_x,hole_y,diam))
         self.plunger_strip = plate_w_holes(strip_x, strip_y, strip_z, holes=hole_list)
+
+        # Plunger holes
+        x,y,z = self.params['inner_dimensions']
+        wall_thickness = self.params['wall_thickness']
+        bottom_x_overhang = self.params['bottom_x_overhang']
+        cap_offset_x = self.params['capillary_hole_offset']
+        overhang_x = self.params['bottom_x_overhang']
+        thickness = self.params['wall_thickness']
+        pcb_x, pcb_y, pcb_z = self.params['sensor_pcb_dimensions']
+        pcb_overhang_x = self.params['sensor_pcb_overhang_x']
+        asym = self.params['guide_plate_asym'][0]
+        rad = .5*self.params['plunger_strip_etched_hole_diam']
+
+        pos_x_strip = 0.
+        dx = 0.5*x + thickness + overhang_x - (.5*pcb_x + pcb_overhang_x)
+        pos_x_bot = 0.5*x + thickness + overhang_x - .5*dx
+        height = strip_z
+        y_0 = self.get_y_values()[2]
+        for y_pos in self.get_y_values():
+            pos_y = y_pos - y_0
+            cyl = Cylinder(r1=rad,r2=rad,h=height)
+            strip_cyl = Translate(cyl,v=(pos_x_strip,pos_y,.5*strip_z))
+            self.plunger_strip = Difference([self.plunger_strip,strip_cyl])
+
+            y_shift = y_pos - cap_offset_x - .5*asym
+            bot_cyl = Translate(cyl,v=(pos_x_bot,y_shift,-.5*wall_thickness))
+            self.bottom = Difference([self.bottom,bot_cyl])
 
     #########################################
     # Enclosure Assembly

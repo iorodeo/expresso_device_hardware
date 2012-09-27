@@ -4,7 +4,6 @@ syntax: glob
 *.o
 *.egg-info
 *.swp
-*.scad
 *.stl
 *.pkl
 *.komodo*

@@ -60,7 +60,7 @@ params = {
         'sensor_hole_offset'                 : 0.685,
         'sensor_mount_hole_diam'             : 0.11*INCH2MM, 
         'sensor_mount_hole_pos'              : 57.40, 
-        'plunger_thru_hole_diam'             : 4,
+        'plunger_thru_hole_diam'             : 3.5,
 
         # LED PCB parameters
         'led_pcb_dimensions'                 : (61.0, 7*25.4, 1.7),
@@ -97,8 +97,9 @@ params = {
 
         # Plunger strip parameters
         'plunger_strip_dimensions'           : (9.,5.*INCH2MM,3.),
-        'plunger_strip_tap_hole_diam'        : .0700*INCH2MM,
-        'plunger_strip_etched_hole_diam'     : 6.,
+        'plunger_strip_tap_hole_diam'        : 0.0641*INCH2MM,
+        'plunger_strip_thru_hole_diam'       : 0.0890*INCH2MM,
+        'plunger_strip_etched_hole_diam'     : 7.,
 
         #'vial_diam'                        : 10.5,
         #'vial_length'                      : 42,

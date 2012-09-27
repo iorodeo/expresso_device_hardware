@@ -274,6 +274,7 @@ class Expresso_Enclosure(Basic_Enclosure):
         # Physical offset of sensor 'cells' relative to sensor's longitudinal axis
         cap_offset_x =  self.params['capillary_hole_offset']
         diam =  self.params['plunger_thru_hole_diam']
+        diam_tap = self.params['plunger_strip_tap_hole_diam']
         x,y,z = self.params['inner_dimensions']
         overhang_x = self.params['bottom_x_overhang']
         thickness = self.params['wall_thickness']
@@ -284,6 +285,7 @@ class Expresso_Enclosure(Basic_Enclosure):
         hole_list = [] 
         dx = 0.5*x + thickness + overhang_x - (.5*pcb_x + pcb_overhang_x)
         pos_x = 0.5*x + thickness + overhang_x - .5*dx
+        cnt = 0
         for y_pos in self.get_y_values():
             pos_y = y_pos - cap_offset_x - .5*asym
             hole = {
@@ -293,8 +295,23 @@ class Expresso_Enclosure(Basic_Enclosure):
                     'size'     : diam,
                     }
             hole_list.append(hole)
+            cnt+=1
+            if cnt == 1:
+                dy = -.25*INCH2MM
+            elif (cnt == 2) or (cnt == 3):
+                dy = .5*INCH2MM
+            elif cnt == 5:
+                dy = +.25*INCH2MM
+            else:
+                continue
+            hole = {
+                    'panel'    : 'bottom',
+                    'type'     : 'round',
+                    'location' : (pos_x,pos_y-dy),
+                    'size'     : diam_tap,
+                    }
+            hole_list.append(hole)
         self.params['hole_list'].extend(hole_list)
-
     #########################################
     # Auxiliary functions
     #########################################
@@ -547,7 +564,7 @@ class Expresso_Enclosure(Basic_Enclosure):
         hole_x = 0
          
         # Mounting holes
-        diam = self.params['plunger_strip_tap_hole_diam']
+        diam = self.params['plunger_strip_thru_hole_diam']
         for i in [1,8,12,19]:
             hole_y = -.5*strip_y+i*.25*INCH2MM
             hole_list.append((hole_x,hole_y,diam))

@@ -11,6 +11,7 @@ Aluminum M/F. Hex Standoffs 3/16"   4       93505A513                   McMaster
 3/16" 2-56 Black Ox. Screws         44*     91249A046                   McMaster-Carr       2.14
 1/4" 2-56 Black Ox. Screws          4       91249A050                   McMaster-Carr       0.15
 1/8" x 1/4" Compressible Spring     5       LW025020125S                Lee Spring          12.0
+3/16" 4-40 Black Ox. Sock. Screws   10      91251A105                   McMaster-Carr       0.96
 
 NOTES:
 *20 guides, 8 standoffs, 10 sensor PCB, 4 diffuser, 2 LED PCB

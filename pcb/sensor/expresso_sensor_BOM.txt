@@ -1,0 +1,9 @@
+----------------------------------------------------------------------------------------------------
+Desc.                               Qty.    Part No.                    Company             Price($)
+----------------------------------------------------------------------------------------------------
+400 DPI SENSOR TAOS PHOTODIODES     5       856-TSL1406R                Mouser              128.00
+CAP CER 0.1UF 16V Y5V 0603          5       490-1577-1-ND               Digi-Key            0.50
+CONN FEMALE 20POS .1" SMD TIN       2       NPTC201KFXC-RC              Digi-Key            3.66
+CONN PWR JACK 1.65X4.4MM SMT        1       CP-018HPJCT-ND              Digi-Key            1.30
+CONN HEADER 50POS .100" SGL GOLD    .04     SAM1031-50-ND               Digi-Key            0.13
+Maple Mini microcontroller          1       ARM60717P                   Seeed Studio        34.99

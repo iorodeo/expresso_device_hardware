@@ -2,7 +2,7 @@
 Desc.                               Qty.    Part No.                    Company             Price($)
 ----------------------------------------------------------------------------------------------------
 1/8" Matte Black Acrylic 8"x12"     1       25094-01                    Inventables         8.00
-1/16" Brushed Alum. on Black 4"x12" 1       25257-03                    Incentables         4.36
+1/16" Brushed Alum. on Black 4"x12" 1       25257-03                    Inventables         4.36
 1/16" Black Acrylic 12"x12"         1       24112-07                    Inventables         4.03
 1/16" White (.31T) Acrylic 4"x12"   1       24129-04                    Inventables         1.99
 1/16" Clear Acrylic 6"x4"           1       8560K178                    McMaster-Carr       0.84

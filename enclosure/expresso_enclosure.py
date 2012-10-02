@@ -170,7 +170,6 @@ class Expresso_Enclosure(Basic_Enclosure):
         Add hole to the left wall for the power connector.
         """
         x,y,z = self.params['inner_dimensions']
-        x_offset = self.params['inner_dimension_offset']
         power_width = self.params['power_width']
         power_height = self.params['power_height']
         power_length = self.params['power_length']

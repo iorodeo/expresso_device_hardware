@@ -23,7 +23,6 @@ hole_list = []
 params = {
         # Basic Enclosure parameters
         'inner_dimensions'                   : (x,y,z), 
-        'inner_dimension_offset'             : 0.5*INCH2MM,
         'wall_thickness'                     : 3., 
         'lid2front_tab_width'                : 7.,
         'lid2side_tab_width'                 : 7., 
@@ -111,7 +110,7 @@ if __name__ == '__main__':
     enclosure = Expresso_Enclosure(params)
     enclosure.make()
 
-    create_dxf=True
+    create_dxf=False
     
     part_assembly = enclosure.get_assembly(
             show_top=True,
@@ -137,7 +136,7 @@ if __name__ == '__main__':
     prog_assembly = SCAD_Prog()
     prog_assembly.fn = 50
     prog_assembly.add(part_assembly)
-    prog_assembly.write('scad/expresso_assembly.scad')
+    prog_assembly.write('scad/enclosure_assembly.scad')
 
     # Write projection scad file
     projection_parts = []
@@ -157,7 +156,7 @@ if __name__ == '__main__':
     prog_assembly = SCAD_Prog()
     prog_assembly.fn = 50
     prog_assembly.add(projection_parts)
-    prog_assembly.write('scad/expresso_projection.scad')
+    prog_assembly.write('scad/enclosure_projection.scad')
         
     # Write scad file for projections
     scad_projection_files = []

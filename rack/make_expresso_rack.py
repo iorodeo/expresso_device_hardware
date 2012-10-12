@@ -55,6 +55,7 @@ params = {
         'wall_hole_y_offset'    : .5*INCH2MM, # from the floors' surface
         'floor_hole_y_offset'   : .5*INCH2MM, # from the floors' end, including overhang
         'floor_hole_dia_thru'   : .2570*INCH2MM,
+        'floor_hole_dia_tap'    : .2010*INCH2MM,
         'holder_height'         : 4.*INCH2MM,
         'holder_slot_size'      : (wall_thickness_enc,.6*x_e),
         'floor_slot_tol'        : (.1*INCH2MM,.05*INCH2MM),

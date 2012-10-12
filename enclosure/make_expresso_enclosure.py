@@ -32,7 +32,7 @@ params = {
         'lid2front_tabs'                     : (0.25,0.75),
         'top_x_overhang'                     : 1.5,
         'top_y_overhang'                     : 1.5,
-        'bottom_x_overhang'                  : 14.3,
+        'bottom_x_overhang'                  : 16.3,
         'bottom_y_overhang'                  : 1.*INCH2MM-5.65, 
         'lid_radius'                         : 1.5,  
         'standoff_diameter'                  : 0.1895*INCH2MM,
@@ -59,7 +59,7 @@ params = {
         'sensor_hole_offset'                 : 0.685,
         'sensor_mount_hole_diam'             : 0.11*INCH2MM, 
         'sensor_mount_hole_pos'              : 57.40, 
-        'plunger_thru_hole_diam'             : 3.5,
+        'plunger_thru_hole_diam'             : 5,
 
         # LED PCB parameters
         'led_pcb_dimensions'                 : (61.0, 7*25.4, 1.7),
@@ -70,8 +70,8 @@ params = {
         'led_pcb_hole_offset_y'              : 0.1*INCH2MM,
 
         # Sensor PCB parameters,
-        'sensor_pcb_dimensions'              : (61.0, 7*25.4, 1.7),
-        'sensor_pcb_overhang_x'              : 8.5,
+        'sensor_pcb_dimensions'              : (61.0, 7.*INCH2MM, 1.7),
+        'sensor_pcb_overhang_x'              : 8.5, #accounts for wall thickness
         'sensor_pcb_hole_offset_y'           : 0.1*INCH2MM,
         'sensor_pcb_hole_offset_x'           : 0.1*INCH2MM,
         'sensor_pcb_hole_pos_y'              : (44.575,95.25,146.05), #from end of pcb
@@ -82,11 +82,11 @@ params = {
         'maple_length'                       : 2.02*INCH2MM,
         'usb_hole_size'                      : (7.8,4.4,.2),
         'usb_pos'                            : 15.3,
-        'power_y_offset'                     : .5315*INCH2MM, #from end of pcb
-        'power_width'                        : 0.317*INCH2MM,
+        'power_y_offset'                     : 13.,
+        'power_width'                        : 8.,
         'power_plug_offset'                  : 1.5, #relative to the power connector position
-        'power_length'                       : 0.366*INCH2MM,
-        'power_height'                       : 8.6,
+        'power_length'                       : 9.2,
+        'power_height'                       : 5.6,
 
         # Diffuser parameters
         'diffuser_standoff_height'           : (7./32.0)*INCH2MM,
@@ -95,10 +95,10 @@ params = {
         'diffuser_thru_hole_diam'            : 0.0890*INCH2MM,
 
         # Plunger strip parameters
-        'plunger_strip_dimensions'           : (9.,5.*INCH2MM,3.),
+        'plunger_strip_dimensions'           : (11.,5.*INCH2MM,3.),
         'plunger_strip_tap_hole_diam'        : 0.0641*INCH2MM,
         'plunger_strip_thru_hole_diam'       : 0.0890*INCH2MM,
-        'plunger_strip_etched_hole_diam'     : 7.,
+        'plunger_strip_etched_hole_diam'     : 9,
 
         #'vial_diam'                        : 10.5,
         #'vial_length'                      : 42,
@@ -110,23 +110,23 @@ if __name__ == '__main__':
     enclosure = Expresso_Enclosure(params)
     enclosure.make()
 
-    create_dxf=False
+    create_dxf=True
     
     part_assembly = enclosure.get_assembly(
             show_top=True,
-            show_bottom=True, 
+            show_led_pcb=True,
+            show_diffuser_standoffs=True,
+            show_diffuser=True,
             show_front=True,
             show_back=True,
             show_left=True,
             show_right=True,
             show_standoffs=True,
+            show_bottom=True, 
             show_guide_bottom=True,
             show_guide_top=True,
             show_capillary=True,
-            show_sensor=False,
-            show_diffuser=True,
-            show_diffuser_standoffs=True,
-            show_led_pcb=True,
+            show_sensor=True,
             show_sensor_pcb=True,
             show_plunger_strip=True,
             explode=(0,0,4),

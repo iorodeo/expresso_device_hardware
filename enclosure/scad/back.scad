@@ -9,7 +9,7 @@
 
 $fn = 50;
 projection(cut=true) {
-    translate(v=[72.52500, 0.00000, 0.00000]) {
+    translate(v=[74.52500, 0.00000, 0.00000]) {
         rotate(a=90.00000,v=[0.00000, 0.00000, 1.00000]) {
             difference() {
                 difference() {

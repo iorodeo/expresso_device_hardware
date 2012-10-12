@@ -9,7 +9,7 @@
 
 $fn = 50;
 projection(cut=true) {
-    translate(v=[127.55000, 0.00000, 0.00000]) {
+    translate(v=[129.55000, 0.00000, 0.00000]) {
         difference() {
             cube(size=[61.00000, 139.70000, 1.50000], center=true);
             translate(v=[-27.96000, 67.31000, 0.00000]) {

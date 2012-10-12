@@ -127,15 +127,17 @@ class Expresso_Enclosure(Basic_Enclosure):
         hole_list = [] 
         power_width = self.params['power_width']
         power_length = self.params['power_length']
+        pcb_overhang_x = self.params['sensor_pcb_overhang_x']
         x,y,z = self.params['inner_dimensions']
         # Using the LED PCB dimensions, which are similar to the sensor PCB 
         # dimensions sans the overhang in the 'x' (shorter) dimension
         led_x, led_y, led_z = self.params['led_pcb_dimensions']
         y_pos = -.5*led_y + self.params['power_y_offset']
-        x_pos = -.5*(led_x - power_length)
+        x_pos = -.5*(led_x - power_length) - pcb_overhang_x 
         connector_offset = self.params['power_plug_offset']
         thickness = self.params['wall_thickness']
         bottom_x_overhang = self.params['bottom_x_overhang']
+        dx = bottom_x_overhang - pcb_overhang_x + thickness + .5*(x-led_x)
         # Power connector cutout
         hole = {
                     'panel'    : 'bottom', 
@@ -151,16 +153,7 @@ class Expresso_Enclosure(Basic_Enclosure):
                     'panel'    : 'bottom', 
                     'type'     : 'square', 
                     'location' : (x_pos, y_pos),
-                    'size'     : (2*bottom_x_overhang, 1.4*power_width),
-                    }
-        hole_list.append(hole)
-        x_pos = -.5*led_x-thickness
-        # Plug connector hole
-        hole = {
-                    'panel'    : 'bottom', 
-                    'type'     : 'square', 
-                    'location' : (x_pos, y_pos),
-                    'size'     : (2.1*thickness, 2*(.5*power_width-connector_offset)),
+                    'size'     : (2*dx, 1.4*power_width),
                     }
         hole_list.append(hole)
         self.params['hole_list'].extend(hole_list)
@@ -176,13 +169,13 @@ class Expresso_Enclosure(Basic_Enclosure):
         led_x, led_y, led_z = self.params['led_pcb_dimensions']
 
         hole_list = [] 
-        pos_x = -.5*led_y + self.params['power_y_offset'] + self.params['power_plug_offset']
+        pos_x = -.5*led_y + self.params['power_y_offset']
         pos_y = -.5*z
         hole = {
                 'panel'    : 'left',
                 'type'     : 'square',
                 'location' : (pos_x, pos_y),
-                'size'     : (1.4*power_width, power_height),
+                'size'     : (power_width, power_height),
                 }
         hole_list.append(hole)
         self.params['hole_list'].extend(hole_list)

@@ -29,6 +29,7 @@ class Expresso_Rack(object):
         d_tab = self.params['wall_tab_dist']
         tab_width = self.params['wall_tab_width']
         dia = self.params['wall_hole_dia_thru']
+        dia_tap = self.params['wall_hole_dia_tap']
         wall_hole_y_offset = self.params['wall_hole_y_offset']
         tab_depth = thickness
         x_w = x + 2*wall_x_overhang
@@ -48,13 +49,13 @@ class Expresso_Rack(object):
             if i < 2*self.params['num_devices']-2:
                 hole_x = (i+1)*d_tab - .5*x + d_tab
                 hole_y = -.5*y_w + wall_hole_y_offset
-                hole_data = (hole_x,hole_y,dia)
+                hole_data = (hole_x,hole_y,dia_tap)
                 hole_list.append(hole_data)
             # Special case for a 1-device rack
             if self.params['num_devices'] == 1:
                 hole_x = (i+1)*d_tab - .5*x
                 hole_y = -.5*y_w + wall_hole_y_offset
-                hole_data = (hole_x,hole_y,dia)
+                hole_data = (hole_x,hole_y,dia_tap)
                 hole_list.append(hole_data)
 
         # End holes of the walls, for stability rods
@@ -76,7 +77,8 @@ class Expresso_Rack(object):
                     hole_y = dy
                     hole_data = (hole_x,hole_y,dia)
                     hole_list.append(hole_data)
-        # Special cases for a 5-device (or greater) rack
+
+        # Special cases for a 5-device (or greater) rack, I
         # need to add an extra support hole in the middle
         if self.params['num_devices'] >= 5:
             for dy in holder_hole_offset:
@@ -109,7 +111,7 @@ class Expresso_Rack(object):
         d_slot = self.params['wall_tab_dist']
         slot_width = self.params['wall_tab_width']
         tol = self.params['floor_slot_tol']
-        dia = self.params['floor_hole_dia_thru']
+        dia = self.params['floor_hole_dia_tap']
         floor_hole_y_offset = self.params['floor_hole_y_offset']
 
         x_f = x + 2*floor_x_overhang
@@ -186,7 +188,8 @@ class Expresso_Rack(object):
                     hole_y = dy
                     hole_data = (hole_x,hole_y,dia)
                     hole_list.append(hole_data)
-        # Special cases for a 5-device (or greater) rack
+
+        # Special cases for a 5-device (or greater) rack, I
         # need to add an extra support hole in the middle
         if self.params['num_devices'] >= 5:
             for dy in holder_hole_offset:

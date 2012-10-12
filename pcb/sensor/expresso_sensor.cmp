@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPCB (2011-aug-04)-testing date = Sat 11 Feb 2012 12:26:34 PM PST
+Cmp-Mod V01 Created by CvPCB (2011-05-25)-stable date = Thu 11 Oct 2012 06:24:44 PM PDT
 
 BeginCmp
 TimeStamp = /4EFBA342;
@@ -8,7 +8,7 @@ IdModule  = SM0603;
 EndCmp
 
 BeginCmp
-TimeStamp = /4F36C811;
+TimeStamp = /5077711E;
 Reference = C2;
 ValeurCmp = 0.1uF;
 IdModule  = SM0603;
@@ -57,7 +57,7 @@ IdModule  = TAOS_TSL1406R;
 EndCmp
 
 BeginCmp
-TimeStamp = /4F36C812;
+TimeStamp = /5077711F;
 Reference = U2;
 ValeurCmp = TAOS_TSL1406R;
 IdModule  = TAOS_TSL1406R;

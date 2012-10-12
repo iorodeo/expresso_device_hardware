@@ -98,7 +98,7 @@ params = {
         'plunger_strip_dimensions'           : (11.,5.*INCH2MM,3.),
         'plunger_strip_tap_hole_diam'        : 0.0641*INCH2MM,
         'plunger_strip_thru_hole_diam'       : 0.0890*INCH2MM,
-        'plunger_strip_etched_hole_diam'     : 9,
+        'plunger_strip_etched_hole_diam'     : 8,
 
         #'vial_diam'                        : 10.5,
         #'vial_length'                      : 42,

@@ -342,23 +342,23 @@ projection(cut=true) {
                             }
                         }
                         translate(v=[44.50000, 68.10500, -1.50000]) {
-                            cylinder(h=3.00000,r1=4.50000,r2=4.50000,center=true);
+                            cylinder(h=3.00000,r1=4.00000,r2=4.00000,center=true);
                         }
                     }
                     translate(v=[44.50000, 42.70500, -1.50000]) {
-                        cylinder(h=3.00000,r1=4.50000,r2=4.50000,center=true);
+                        cylinder(h=3.00000,r1=4.00000,r2=4.00000,center=true);
                     }
                 }
                 translate(v=[44.50000, 17.30500, -1.50000]) {
-                    cylinder(h=3.00000,r1=4.50000,r2=4.50000,center=true);
+                    cylinder(h=3.00000,r1=4.00000,r2=4.00000,center=true);
                 }
             }
             translate(v=[44.50000, -8.09500, -1.50000]) {
-                cylinder(h=3.00000,r1=4.50000,r2=4.50000,center=true);
+                cylinder(h=3.00000,r1=4.00000,r2=4.00000,center=true);
             }
         }
         translate(v=[44.50000, -33.49500, -1.50000]) {
-            cylinder(h=3.00000,r1=4.50000,r2=4.50000,center=true);
+            cylinder(h=3.00000,r1=4.00000,r2=4.00000,center=true);
         }
     }
 }

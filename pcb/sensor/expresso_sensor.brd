@@ -1,4 +1,4 @@
-PCBNEW-BOARD Version 1 date Fri 12 Oct 2012 09:19:47 AM PDT
+PCBNEW-BOARD Version 1 date Fri 12 Oct 2012 12:19:16 PM PDT
 
 # Created by Pcbnew(2011-05-25)-stable
 
@@ -1575,7 +1575,7 @@ $EndSHAPE3D
 $EndMODULE  SM0603
 $TEXTPCB
 Te "Expresso Sensor Board v1.3"
-Po 27362 13008 600 600 120 0
+Po 28070 13780 600 600 120 0
 De 20 0 0 Normal
 $EndTEXTPCB
 $DRAWSEGMENT

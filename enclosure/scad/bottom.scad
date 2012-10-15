@@ -257,8 +257,8 @@ projection(cut=true) {
                                                                                                                     cube(size=[9.20000, 8.00000, 6.00000], center=true);
                                                                                                                 }
                                                                                                             }
-                                                                                                            translate(v=[-50.00000, -74.40000, 0.00000]) {
-                                                                                                                cube(size=[22.00000, 11.20000, 6.00000], center=true);
+                                                                                                            translate(v=[-50.00000, -74.60000, 0.00000]) {
+                                                                                                                cube(size=[23.10000, 10.60000, 6.00000], center=true);
                                                                                                             }
                                                                                                         }
                                                                                                         translate(v=[0.00000, -78.90000, 0.00000]) {

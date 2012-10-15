@@ -24,7 +24,7 @@ INCH2MM = 25.4
 # Inside dimensions enclosure
 x,y,z = 61.4, 8.0*INCH2MM, 0.75*INCH2MM 
 wall_thickness_enc = 3.
-bottom_x_overhang = 14.3
+bottom_x_overhang = 16.3
 bottom_y_overhang = 1.*INCH2MM-5.65 
 
 x_e = x + 2.*wall_thickness_enc + 2.*bottom_x_overhang
@@ -61,8 +61,10 @@ params = {
         'floor_slot_tol'        : (.1*INCH2MM,.05*INCH2MM),
         'tilt_angle'            : tilt_angle,
         'holder_z_offset'       : 1.*INCH2MM, # from the floors' surface
-        'holder_hole_offset'  : (-1.75*INCH2MM,1.75*INCH2MM),
+        'holder_hole_offset'    : (-1.75*INCH2MM,1.75*INCH2MM),
         'stability_rod_dia'     : .5*INCH2MM,
+        'shelf_slot_pos'        : (1.5*INCH2MM,1.375*INCH2MM,1.25*INCH2MM),
+        'shelf_slot_thickness'  : 1.5,
         }
 
 # -----------------------------------------------------------------------------
@@ -75,9 +77,10 @@ if __name__ == '__main__':
 
     part_assembly = rack.get_assembly(
             show_walls=True,
-            show_floor=True,
+            show_floor=False,
             show_holders=True,
-            explode=(0,6,6),
+            show_shelf=True,
+            explode=(0,0,0),
             )
 
     # Write assembly scad file

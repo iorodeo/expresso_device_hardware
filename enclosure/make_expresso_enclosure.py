@@ -84,7 +84,8 @@ params = {
         'usb_pos'                            : 15.3,
         'power_y_offset'                     : 13.,
         'power_width'                        : 8.,
-        'power_plug_offset'                  : 1.5, #relative to the power connector position
+        'power_plug_offset'                  : 1.3, #relative to the power connector position
+        'power_head_dia'                     : 10.6,
         'power_length'                       : 9.2,
         'power_height'                       : 5.6,
 

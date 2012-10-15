@@ -14,6 +14,7 @@ class Expresso_Rack(object):
         self.__make_walls()
         self.__make_floor()
         self.__make_holders()
+        self.__make_shelf()
         self.__make_bracket()
     
     #########################################
@@ -21,7 +22,7 @@ class Expresso_Rack(object):
     #########################################
     def __make_walls(self):
         """
-        Creates the left and right walls of the racki (plate w/ tabs).
+        Creates the left and right walls of the rack (plate w/ tabs).
         """
         x,y,z = self.params['inner_dimensions']
         thickness = self.params['wall_thickness']
@@ -170,6 +171,8 @@ class Expresso_Rack(object):
         r_t = .5*thickness_enc
         theta = self.params['tilt_angle']*self.DEG2RAD
         holder_slot_y_offset = .5*y_h + r_t*math.cos(theta) - r*math.cos(theta)
+        
+        self.shelf_y_offset = holder_slot_y_offset - r*math.cos(theta)
 
         slot_list = []
         hole_list = []
@@ -207,6 +210,55 @@ class Expresso_Rack(object):
         holder_maker = Expresso_Holder(params)
         self.holder = holder_maker.make()
 
+    def __make_shelf(self):
+        """
+        Creates the shelf on which the vials rest (plate w/ tabs).
+        """
+        x,y,z = self.params['inner_dimensions']
+        thickness = self.params['wall_thickness']
+        shelf_x_overhang = self.params['x_r_overhang']
+        tab_width = self.params['wall_tab_width']
+        dia = self.params['wall_hole_dia_thru']
+        dia_tap = self.params['wall_hole_dia_tap']
+        wall_hole_y_offset = self.params['wall_hole_y_offset']
+        shelf_slot_thickness = self.params['shelf_slot_thickness']
+        tab_depth = 2*thickness
+        x_s = x + 2*shelf_x_overhang
+        y_s = y - 2*thickness
+        z_s = shelf_slot_thickness
+
+        xz = []
+        hole_list = []
+        # Create tab data for xz- face of walls
+        tab_data = ((x_s-.5*shelf_x_overhang)/x_s, shelf_x_overhang, tab_depth, '+')
+        xz.append(tab_data)
+        tab_data = (.5*shelf_x_overhang/x_s, shelf_x_overhang, .5*tab_depth, '+')
+        xz.append(tab_data)
+
+        # Pack data into parameters structure
+        params = {
+                'size'      : (x_s, y_s, z_s),
+                'radius'    : self.params['corner_radius'], 
+                'xz+'       : xz,
+                'xz-'       : xz,
+                'yz+'       : [],
+                'yz-'       : [],
+                'hole_list' : hole_list,
+        }  
+        x_shift = .5*x_s
+
+
+
+        y_shift = self.shelf_y_offset - r*math.cos(theta)
+        
+
+        slot_maker = Cube(size = (2*shelf_x_overhang,1.5,2*thickness))
+        slot_maker = Translate(slot_maker,v=(.5*x_s,-10,0))
+        self.left_wall = Difference([self.left_wall,slot_maker])
+
+        plate_maker = Plate_W_Tabs(params)
+        self.shelf = plate_maker.make()
+
     def __make_bracket(self):
         pass
 
@@ -230,6 +282,10 @@ class Expresso_Rack(object):
             show_holders = kwargs['show_holders']
         except KeyError:
             show_holders = True
+        try:
+            show_shelf = kwargs['show_shelf']
+        except KeyError:
+            show_shelf = True
         try:
             explode = kwargs['explode']
         except KeyError:
@@ -279,6 +335,15 @@ class Expresso_Rack(object):
         if show_holders:
             part_list.append(left_holder)
             part_list.append(right_holder)
+
+        ##
+        # Add shelf to the assembly parts list.
+        ##
+        z_shift = 2*25.4-exp_z
+        shelf = Translate(self.shelf,v=(0,0,z_shift))
+        if show_shelf:
+            part_list.append(shelf)
+            #part_list.append(self.slot_maker)
 
         return part_list
 

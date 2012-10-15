@@ -153,7 +153,7 @@ class Expresso_Enclosure(Basic_Enclosure):
                     'panel'    : 'bottom', 
                     'type'     : 'square', 
                     'location' : (x_pos, y_pos),
-                    'size'     : (2*dx, 1.4*power_width),
+                    'size'     : (2.1*dx, self.params['power_head_dia']),
                     }
         hole_list.append(hole)
         self.params['hole_list'].extend(hole_list)

@@ -163,11 +163,11 @@ if __name__ == '__main__':
     scad_projection_files = []
 
     parts_names = [
-                    'front',
-                    'bottom',
                     'top',
-                    'right_wall',
+                    'bottom',
                     'left_wall',
+                    'right_wall',
+                    'front',
                     'back',
                     'ref_cube',
                     'diffuser',

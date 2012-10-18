@@ -23,7 +23,7 @@ hole_list = []
 params = {
         # Basic Enclosure parameters
         'inner_dimensions'                   : (x,y,z), 
-        'wall_thickness'                     : 3., 
+        'wall_thickness'                     : 3.35, 
         'lid2front_tab_width'                : 7.,
         'lid2side_tab_width'                 : 7., 
         'side2side_tab_width'                : 7.,
@@ -38,6 +38,7 @@ params = {
         'standoff_diameter'                  : 0.1895*INCH2MM,
         'standoff_offset'                    : 0.05*INCH2MM,
         'standoff_hole_diameter'             : 0.089*INCH2MM, 
+        'tab_depth_adjust'                   : 1.5,
 
         # Expresso Enclosure parameters
         'hole_list'                          : hole_list,
@@ -130,7 +131,7 @@ if __name__ == '__main__':
             show_sensor=True,
             show_sensor_pcb=True,
             show_plunger_strip=True,
-            explode=(0,0,4),
+            explode=(0,0,6),
             )
 
     # Write assembly scad file

@@ -33,6 +33,7 @@ class Expresso_Enclosure(Basic_Enclosure):
         self.make_led_pcb()
         self.make_sensor_pcb()
         self.make_plunger_strip()
+        self.make_top_insert()
 
     #########################################
     # Additions to the Basic Enclosure
@@ -589,6 +590,15 @@ class Expresso_Enclosure(Basic_Enclosure):
             bot_cyl = Translate(cyl,v=(pos_x_bot,y_shift,-.5*wall_thickness))
             self.bottom = Difference([self.bottom,bot_cyl])
 
+    def make_top_insert(self):
+        x,y,z = self.params['inner_dimensions']
+        wall_thickness = self.params['wall_thickness']
+        x_top = x+2.*self.params['top_x_overhang']+2.*wall_thickness
+        y_top = y+2.*self.params['top_y_overhang']+2.*wall_thickness
+        z_top = .5*wall_thickness
+        hole_list = self.get_led_holes()
+        self.top_insert = plate_w_holes(x_top,y_top,z_top,hole_list,radius=self.params['lid_radius'])
+
     #########################################
     # Enclosure Assembly
     #########################################
@@ -634,6 +644,10 @@ class Expresso_Enclosure(Basic_Enclosure):
         except KeyError:
             show_diffuser_standoffs = True
         try:
+            show_top_insert = kwargs['show_top_insert']
+        except KeyError:
+            show_top_insert = True
+        try:
             explode = kwargs['explode']
         except KeyError:
             explode = (0,0,0)
@@ -649,6 +663,7 @@ class Expresso_Enclosure(Basic_Enclosure):
         asym = self.params['guide_plate_asym'][0]
 
         # Get all the Basic Enclosure parts and add them to the assembly parts list.
+        self.top = Translate(self.top,v=(0,0,self.params['tab_depth_adjust']))
         parts_list = super(Expresso_Enclosure,self).get_assembly(**kwargs)
 
         ##
@@ -756,6 +771,13 @@ class Expresso_Enclosure(Basic_Enclosure):
         if show_plunger_strip:
             parts_list.append(plunger_strip)
 
+        ##
+        # Add top insert to the assembly parts list.
+        ##
+        z_shift = 0.5*z+.25*wall_thickness + .5*explode_z
+        top_insert = Translate(self.top_insert,v=(0,0,z_shift))
+        if show_top_insert:
+            parts_list.append(top_insert)
         return parts_list
 
     ##########################################

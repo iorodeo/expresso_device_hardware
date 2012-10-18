@@ -9,7 +9,7 @@
 
 $fn = 50;
 projection(cut=true) {
-    translate(v=[0.00000, 186.10000, 0.00000]) {
+    translate(v=[0.00000, 189.95000, 0.00000]) {
         cube(size=[25.40000, 25.40000, 25.40000], center=true);
     }
 }

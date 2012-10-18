@@ -9,7 +9,7 @@
 
 $fn = 50;
 projection(cut=true) {
-    translate(v=[180.55000, 0.00000, 0.00000]) {
+    translate(v=[180.90000, 0.00000, 0.00000]) {
         difference() {
             difference() {
                 difference() {

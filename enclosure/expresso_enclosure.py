@@ -663,7 +663,7 @@ class Expresso_Enclosure(Basic_Enclosure):
         asym = self.params['guide_plate_asym'][0]
 
         # Get all the Basic Enclosure parts and add them to the assembly parts list.
-        self.top = Translate(self.top,v=(0,0,self.params['tab_depth_adjust']))
+        self.top = Translate(self.top,v=(0,0,self.params['tab_depth_adjust']['top']))
         parts_list = super(Expresso_Enclosure,self).get_assembly(**kwargs)
 
         ##

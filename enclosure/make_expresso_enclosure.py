@@ -38,7 +38,7 @@ params = {
         'standoff_diameter'                  : 0.1895*INCH2MM,
         'standoff_offset'                    : 0.05*INCH2MM,
         'standoff_hole_diameter'             : 0.089*INCH2MM, 
-        'tab_depth_adjust'                   : 1.5,
+        'tab_depth_adjust'                   : {'top':1.5,'bot':0.,'side':0.},
 
         # Expresso Enclosure parameters
         'hole_list'                          : hole_list,
@@ -164,22 +164,23 @@ if __name__ == '__main__':
     scad_projection_files = []
 
     parts_names = [
-                    'top',
-                    'bottom',
-                    'left_wall',
-                    'right_wall',
-                    'front',
                     'back',
+                    'right_wall',
+                    'left_wall',
+                    'top',
+                    'front',
                     'ref_cube',
+                    'bottom',
                     'diffuser',
-                    'guide_top',
                     'guide_side_pos_A',
+                    'guide_top',
                     'guide_side_neg_A',
                     'plunger_strip'
                   ]
 
     n = len(parts_names)
     i = 0
+    projection_parts.sort()
     for part in projection_parts:       
         filename = 'scad/'+parts_names[i]+'.scad'
         prog_projection = SCAD_Prog()

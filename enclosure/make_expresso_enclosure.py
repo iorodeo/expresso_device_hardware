@@ -79,8 +79,8 @@ params = {
 
         # Maple uController parameters
         'maple_y_offset'                     : 32., #from end of pcb
-        'maple_width'                        : 0.72*INCH2MM,
-        'maple_length'                       : 2.02*INCH2MM,
+        'maple_width'                        : 0.75*INCH2MM,
+        'maple_length'                       : 2.15*INCH2MM,
         'usb_hole_size'                      : (7.8,4.4,.2),
         'usb_pos'                            : 15.3,
         'power_y_offset'                     : 13.,

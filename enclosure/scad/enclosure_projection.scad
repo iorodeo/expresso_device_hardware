@@ -434,8 +434,8 @@ projection(cut=true) {
                                                                                                                             cylinder(h=6.70000,r1=0.81407,r2=0.81407,center=true);
                                                                                                                         }
                                                                                                                     }
-                                                                                                                    translate(v=[-4.84600, -56.90000, 0.00000]) {
-                                                                                                                        cube(size=[51.30800, 18.28800, 6.70000], center=true);
+                                                                                                                    translate(v=[-3.19500, -56.90000, 0.00000]) {
+                                                                                                                        cube(size=[54.61000, 19.05000, 6.70000], center=true);
                                                                                                                     }
                                                                                                                 }
                                                                                                                 translate(v=[-34.40000, -75.90000, 0.00000]) {

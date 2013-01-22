@@ -30,8 +30,8 @@ params = {
         'lid2side_tabs'                      : (0.41, 0.77),
         'side2side_tabs'                     : (0.5,),
         'lid2front_tabs'                     : (0.25,0.75),
-        'top_x_overhang'                     : 1.5,
-        'top_y_overhang'                     : 1.5,
+        'top_x_overhang'                     : 3,
+        'top_y_overhang'                     : 3,
         'bottom_x_overhang'                  : 16.3,
         'bottom_y_overhang'                  : 1.*INCH2MM-5.65, 
         'lid_radius'                         : 1.5,  
@@ -48,7 +48,7 @@ params = {
         'sensor_ypos_offset'                 : .5*INCH2MM, #from end of pcb
         'capillary_hole_size'                : (9,1.6,0.2),  
         'capillary_hole_offset'              : 0.05*INCH2MM, # physical offset of sensor 'cells' relative to sensor's longitudinal axis
-        'guide_plate_asym'                   : (.7,), # asymmetry that offsets capillary tube over sensor
+        'guide_plate_asym'                   : (-.7,), # asymmetry that offsets capillary tube over sensor
         'guide_plate_dimensions'             : (x-0.2, 0.5*INCH2MM-.5*capillary_diam, 0.0625*INCH2MM),
         'guide_thru_hole_diam'               : 0.0890*INCH2MM,
         'guide_tap_hole_diam'                : 0.0641*INCH2MM,
@@ -79,8 +79,8 @@ params = {
 
         # Maple uController parameters
         'maple_y_offset'                     : 32., #from end of pcb
-        'maple_width'                        : 0.72*INCH2MM,
-        'maple_length'                       : 2.02*INCH2MM,
+        'maple_width'                        : 0.75*INCH2MM,
+        'maple_length'                       : 2.15*INCH2MM,
         'usb_hole_size'                      : (7.8,4.4,.2),
         'usb_pos'                            : 15.3,
         'power_y_offset'                     : 13.,

@@ -39,7 +39,7 @@ projection(cut=true) {
                                         cube(size=[6.70000, 7.00000, 5.02500], center=true);
                                     }
                                 }
-                                translate(v=[68.10500, -9.52500, 0.00000]) {
+                                translate(v=[68.80500, -9.52500, 0.00000]) {
                                     union() {
                                         cube(size=[8.60000, 2.80000, 6.70000], center=true);
                                         translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -69,7 +69,7 @@ projection(cut=true) {
                                     }
                                 }
                             }
-                            translate(v=[42.70500, -9.52500, 0.00000]) {
+                            translate(v=[43.40500, -9.52500, 0.00000]) {
                                 union() {
                                     cube(size=[8.60000, 2.80000, 6.70000], center=true);
                                     translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -99,7 +99,7 @@ projection(cut=true) {
                                 }
                             }
                         }
-                        translate(v=[17.30500, -9.52500, 0.00000]) {
+                        translate(v=[18.00500, -9.52500, 0.00000]) {
                             union() {
                                 cube(size=[8.60000, 2.80000, 6.70000], center=true);
                                 translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -129,7 +129,7 @@ projection(cut=true) {
                             }
                         }
                     }
-                    translate(v=[-8.09500, -9.52500, 0.00000]) {
+                    translate(v=[-7.39500, -9.52500, 0.00000]) {
                         union() {
                             cube(size=[8.60000, 2.80000, 6.70000], center=true);
                             translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -159,7 +159,7 @@ projection(cut=true) {
                         }
                     }
                 }
-                translate(v=[-33.49500, -9.52500, 0.00000]) {
+                translate(v=[-32.79500, -9.52500, 0.00000]) {
                     union() {
                         cube(size=[8.60000, 2.80000, 6.70000], center=true);
                         translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -434,8 +434,8 @@ projection(cut=true) {
                                                                                                                             cylinder(h=6.70000,r1=0.81407,r2=0.81407,center=true);
                                                                                                                         }
                                                                                                                     }
-                                                                                                                    translate(v=[-4.84600, -56.90000, 0.00000]) {
-                                                                                                                        cube(size=[51.30800, 18.28800, 6.70000], center=true);
+                                                                                                                    translate(v=[-3.19500, -56.90000, 0.00000]) {
+                                                                                                                        cube(size=[54.61000, 19.05000, 6.70000], center=true);
                                                                                                                     }
                                                                                                                 }
                                                                                                                 translate(v=[-34.40000, -75.90000, 0.00000]) {
@@ -490,66 +490,66 @@ projection(cut=true) {
                                                                     cylinder(h=6.70000,r1=0.81407,r2=0.81407,center=true);
                                                                 }
                                                             }
-                                                            translate(v=[44.67500, 68.10500, 0.00000]) {
+                                                            translate(v=[44.67500, 68.80500, 0.00000]) {
                                                                 cylinder(h=6.70000,r1=2.50000,r2=2.50000,center=true);
                                                             }
                                                         }
-                                                        translate(v=[44.67500, 74.45500, 0.00000]) {
+                                                        translate(v=[44.67500, 75.15500, 0.00000]) {
                                                             cylinder(h=6.70000,r1=0.81407,r2=0.81407,center=true);
                                                         }
                                                     }
-                                                    translate(v=[44.67500, 42.70500, 0.00000]) {
+                                                    translate(v=[44.67500, 43.40500, 0.00000]) {
                                                         cylinder(h=6.70000,r1=2.50000,r2=2.50000,center=true);
                                                     }
                                                 }
-                                                translate(v=[44.67500, 30.00500, 0.00000]) {
+                                                translate(v=[44.67500, 30.70500, 0.00000]) {
                                                     cylinder(h=6.70000,r1=0.81407,r2=0.81407,center=true);
                                                 }
                                             }
-                                            translate(v=[44.67500, 17.30500, 0.00000]) {
+                                            translate(v=[44.67500, 18.00500, 0.00000]) {
                                                 cylinder(h=6.70000,r1=2.50000,r2=2.50000,center=true);
                                             }
                                         }
-                                        translate(v=[44.67500, 4.60500, 0.00000]) {
+                                        translate(v=[44.67500, 5.30500, 0.00000]) {
                                             cylinder(h=6.70000,r1=0.81407,r2=0.81407,center=true);
                                         }
                                     }
-                                    translate(v=[44.67500, -8.09500, 0.00000]) {
+                                    translate(v=[44.67500, -7.39500, 0.00000]) {
                                         cylinder(h=6.70000,r1=2.50000,r2=2.50000,center=true);
                                     }
                                 }
-                                translate(v=[44.67500, -33.49500, 0.00000]) {
+                                translate(v=[44.67500, -32.79500, 0.00000]) {
                                     cylinder(h=6.70000,r1=2.50000,r2=2.50000,center=true);
                                 }
                             }
-                            translate(v=[44.67500, -39.84500, 0.00000]) {
+                            translate(v=[44.67500, -39.14500, 0.00000]) {
                                 cylinder(h=6.70000,r1=0.81407,r2=0.81407,center=true);
                             }
                         }
-                        translate(v=[44.67500, 68.10500, -1.67500]) {
+                        translate(v=[44.67500, 68.80500, -1.67500]) {
                             cylinder(h=3.00000,r1=4.00000,r2=4.00000,center=true);
                         }
                     }
-                    translate(v=[44.67500, 42.70500, -1.67500]) {
+                    translate(v=[44.67500, 43.40500, -1.67500]) {
                         cylinder(h=3.00000,r1=4.00000,r2=4.00000,center=true);
                     }
                 }
-                translate(v=[44.67500, 17.30500, -1.67500]) {
+                translate(v=[44.67500, 18.00500, -1.67500]) {
                     cylinder(h=3.00000,r1=4.00000,r2=4.00000,center=true);
                 }
             }
-            translate(v=[44.67500, -8.09500, -1.67500]) {
+            translate(v=[44.67500, -7.39500, -1.67500]) {
                 cylinder(h=3.00000,r1=4.00000,r2=4.00000,center=true);
             }
         }
-        translate(v=[44.67500, -33.49500, -1.67500]) {
+        translate(v=[44.67500, -32.79500, -1.67500]) {
             cylinder(h=3.00000,r1=4.00000,r2=4.00000,center=true);
         }
     }
 }
 
 projection(cut=true) {
-    translate(v=[0.00000, -283.70000, 0.00000]) {
+    translate(v=[0.00000, -285.20000, 0.00000]) {
         translate(v=[0.00000, 0.00000, 1.50000]) {
             difference() {
                 difference() {
@@ -570,29 +570,29 @@ projection(cut=true) {
                                                                             difference() {
                                                                                 difference() {
                                                                                     union() {
-                                                                                        cube(size=[68.10000, 209.90000, 3.35000], center=true);
-                                                                                        translate(v=[34.05000, 0.00000, 0.00000]) {
-                                                                                            cube(size=[3.00000, 209.90000, 3.35000], center=true);
+                                                                                        cube(size=[71.10000, 212.90000, 3.35000], center=true);
+                                                                                        translate(v=[35.55000, 0.00000, 0.00000]) {
+                                                                                            cube(size=[3.00000, 212.90000, 3.35000], center=true);
                                                                                         }
-                                                                                        translate(v=[-34.05000, 0.00000, 0.00000]) {
-                                                                                            cube(size=[3.00000, 209.90000, 3.35000], center=true);
+                                                                                        translate(v=[-35.55000, 0.00000, 0.00000]) {
+                                                                                            cube(size=[3.00000, 212.90000, 3.35000], center=true);
                                                                                         }
-                                                                                        translate(v=[0.00000, 104.95000, 0.00000]) {
-                                                                                            cube(size=[68.10000, 3.00000, 3.35000], center=true);
+                                                                                        translate(v=[0.00000, 106.45000, 0.00000]) {
+                                                                                            cube(size=[71.10000, 3.00000, 3.35000], center=true);
                                                                                         }
-                                                                                        translate(v=[0.00000, -104.95000, 0.00000]) {
-                                                                                            cube(size=[68.10000, 3.00000, 3.35000], center=true);
+                                                                                        translate(v=[0.00000, -106.45000, 0.00000]) {
+                                                                                            cube(size=[71.10000, 3.00000, 3.35000], center=true);
                                                                                         }
-                                                                                        translate(v=[-34.05000, -104.95000, 0.00000]) {
+                                                                                        translate(v=[-35.55000, -106.45000, 0.00000]) {
                                                                                             cylinder(h=3.35000,r1=1.50000,r2=1.50000,center=true);
                                                                                         }
-                                                                                        translate(v=[-34.05000, 104.95000, 0.00000]) {
+                                                                                        translate(v=[-35.55000, 106.45000, 0.00000]) {
                                                                                             cylinder(h=3.35000,r1=1.50000,r2=1.50000,center=true);
                                                                                         }
-                                                                                        translate(v=[34.05000, -104.95000, 0.00000]) {
+                                                                                        translate(v=[35.55000, -106.45000, 0.00000]) {
                                                                                             cylinder(h=3.35000,r1=1.50000,r2=1.50000,center=true);
                                                                                         }
-                                                                                        translate(v=[34.05000, 104.95000, 0.00000]) {
+                                                                                        translate(v=[35.55000, 106.45000, 0.00000]) {
                                                                                             cylinder(h=3.35000,r1=1.50000,r2=1.50000,center=true);
                                                                                         }
                                                                                     }
@@ -760,7 +760,7 @@ projection(cut=true) {
                                                     cube(size=[6.70000, 7.00000, 5.02500], center=true);
                                                 }
                                             }
-                                            translate(v=[68.10500, -9.52500, 0.00000]) {
+                                            translate(v=[68.80500, -9.52500, 0.00000]) {
                                                 union() {
                                                     cube(size=[8.60000, 2.80000, 6.70000], center=true);
                                                     translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -790,7 +790,7 @@ projection(cut=true) {
                                                 }
                                             }
                                         }
-                                        translate(v=[42.70500, -9.52500, 0.00000]) {
+                                        translate(v=[43.40500, -9.52500, 0.00000]) {
                                             union() {
                                                 cube(size=[8.60000, 2.80000, 6.70000], center=true);
                                                 translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -820,7 +820,7 @@ projection(cut=true) {
                                             }
                                         }
                                     }
-                                    translate(v=[17.30500, -9.52500, 0.00000]) {
+                                    translate(v=[18.00500, -9.52500, 0.00000]) {
                                         union() {
                                             cube(size=[8.60000, 2.80000, 6.70000], center=true);
                                             translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -850,7 +850,7 @@ projection(cut=true) {
                                         }
                                     }
                                 }
-                                translate(v=[-8.09500, -9.52500, 0.00000]) {
+                                translate(v=[-7.39500, -9.52500, 0.00000]) {
                                     union() {
                                         cube(size=[8.60000, 2.80000, 6.70000], center=true);
                                         translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -880,7 +880,7 @@ projection(cut=true) {
                                     }
                                 }
                             }
-                            translate(v=[-33.49500, -9.52500, 0.00000]) {
+                            translate(v=[-32.79500, -9.52500, 0.00000]) {
                                 union() {
                                     cube(size=[8.60000, 2.80000, 6.70000], center=true);
                                     translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -973,13 +973,13 @@ projection(cut=true) {
     translate(v=[-130.00000, 19.50000, 0.00000]) {
         difference() {
             union() {
-                translate(v=[0.00000, -4.45000, 0.00000]) {
+                translate(v=[0.00000, -3.75000, 0.00000]) {
                     difference() {
                         cube(size=[73.20000, 4.00000, 1.58750], center=true);
                     }
                 }
                 difference() {
-                    cube(size=[61.20000, 12.90000, 1.58750], center=true);
+                    cube(size=[61.20000, 11.50000, 1.58750], center=true);
                     translate(v=[-28.06000, 3.56000, 0.00000]) {
                         cylinder(h=6.35000,r1=1.13030,r2=1.13030,center=true);
                     }
@@ -988,7 +988,7 @@ projection(cut=true) {
                     }
                 }
             }
-            translate(v=[0.00000, -6.45000, 0.00000]) {
+            translate(v=[0.00000, -5.75000, 0.00000]) {
                 cube(size=[50.00000, 0.00000, 1.00000], center=true);
             }
         }
@@ -999,13 +999,13 @@ projection(cut=true) {
     translate(v=[-130.00000, -19.50000, 0.00000]) {
         difference() {
             union() {
-                translate(v=[0.00000, 3.75000, 0.00000]) {
+                translate(v=[0.00000, 4.45000, 0.00000]) {
                     difference() {
                         cube(size=[73.20000, 4.00000, 1.58750], center=true);
                     }
                 }
                 difference() {
-                    cube(size=[61.20000, 11.50000, 1.58750], center=true);
+                    cube(size=[61.20000, 12.90000, 1.58750], center=true);
                     translate(v=[-28.06000, -3.56000, 0.00000]) {
                         cylinder(h=6.35000,r1=1.13030,r2=1.13030,center=true);
                     }
@@ -1015,7 +1015,7 @@ projection(cut=true) {
                 }
             }
             translate(v=[0.00000, 12.20000, 0.00000]) {
-                translate(v=[0.00000, -6.45000, 0.00000]) {
+                translate(v=[0.00000, -5.75000, 0.00000]) {
                     cube(size=[50.00000, 0.00000, 1.00000], center=true);
                 }
             }

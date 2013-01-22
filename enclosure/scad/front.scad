@@ -42,7 +42,7 @@ projection(cut=true) {
                                                     cube(size=[6.70000, 7.00000, 5.02500], center=true);
                                                 }
                                             }
-                                            translate(v=[68.10500, -9.52500, 0.00000]) {
+                                            translate(v=[68.80500, -9.52500, 0.00000]) {
                                                 union() {
                                                     cube(size=[8.60000, 2.80000, 6.70000], center=true);
                                                     translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -72,7 +72,7 @@ projection(cut=true) {
                                                 }
                                             }
                                         }
-                                        translate(v=[42.70500, -9.52500, 0.00000]) {
+                                        translate(v=[43.40500, -9.52500, 0.00000]) {
                                             union() {
                                                 cube(size=[8.60000, 2.80000, 6.70000], center=true);
                                                 translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -102,7 +102,7 @@ projection(cut=true) {
                                             }
                                         }
                                     }
-                                    translate(v=[17.30500, -9.52500, 0.00000]) {
+                                    translate(v=[18.00500, -9.52500, 0.00000]) {
                                         union() {
                                             cube(size=[8.60000, 2.80000, 6.70000], center=true);
                                             translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -132,7 +132,7 @@ projection(cut=true) {
                                         }
                                     }
                                 }
-                                translate(v=[-8.09500, -9.52500, 0.00000]) {
+                                translate(v=[-7.39500, -9.52500, 0.00000]) {
                                     union() {
                                         cube(size=[8.60000, 2.80000, 6.70000], center=true);
                                         translate(v=[4.30000, 0.00000, 0.00000]) {
@@ -162,7 +162,7 @@ projection(cut=true) {
                                     }
                                 }
                             }
-                            translate(v=[-33.49500, -9.52500, 0.00000]) {
+                            translate(v=[-32.79500, -9.52500, 0.00000]) {
                                 union() {
                                     cube(size=[8.60000, 2.80000, 6.70000], center=true);
                                     translate(v=[4.30000, 0.00000, 0.00000]) {

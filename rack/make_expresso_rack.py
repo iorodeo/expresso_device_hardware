@@ -28,7 +28,7 @@ bottom_x_overhang = 16.3
 bottom_y_overhang = 1.*INCH2MM-5.65 
 
 x_e = x + 2.*wall_thickness_enc + 2.*bottom_x_overhang
-y_e = y + 2.*wall_thickness_enc + 2.*bottom_y_overhang
+y_e = y + 2.*wall_thickness_enc + 2.*bottom_y_overhang -.1*INCH2MM
 z_e = z
 
 #Inside dimensions rack
@@ -46,7 +46,7 @@ params = {
         'wall_thickness'        : wall_thickness_rack,
         'wall_thickness_enc'    : wall_thickness_enc,
         'x_r_overhang'          : 1.*INCH2MM,
-        'y_r_overhang'          : 1.*INCH2MM,
+        'y_r_overhang'          : 1.*INCH2MM-.1*INCH2MM,
         'corner_radius'         : 1.5,
         'wall_tab_dist'         : 1.25*INCH2MM,
         'wall_tab_width'        : 1.*INCH2MM,
@@ -63,8 +63,11 @@ params = {
         'holder_z_offset'       : 1.*INCH2MM, # from the floors' surface
         'holder_hole_offset'    : (-1.75*INCH2MM,1.75*INCH2MM),
         'stability_rod_dia'     : .5*INCH2MM,
+        'stability_rod_x_offset': .5*INCH2MM,
         'shelf_slot_pos'        : (1.5*INCH2MM,1.375*INCH2MM,1.25*INCH2MM),
-        'shelf_slot_thickness'  : 1.5,
+        'shelf_slot_thickness'  : 3,
+        'shelf_slot_num'        : 6,
+        'shelf_z_offset'        : -9
         }
 
 # -----------------------------------------------------------------------------
@@ -73,13 +76,14 @@ if __name__ == '__main__':
     rack = Expresso_Rack(params)
     rack.make()
 
-    create_dxf=False
+    create_dxf=True
 
     part_assembly = rack.get_assembly(
             show_walls=True,
-            show_floor=False,
+            show_floor=True,
             show_holders=True,
             show_shelf=True,
+            show_bar=True,
             explode=(0,0,0),
             )
 
@@ -89,6 +93,57 @@ if __name__ == '__main__':
     prog_assembly.add(part_assembly)
     prog_assembly.write('scad/rack_assembly.scad')
 
+    # Write projection scad file
+    projection_parts = []
+    walls_projection = rack.get_walls_projection()
+    floor_projection = rack.get_floor_projection()
+    holders_projection = rack.get_holders_projection()
+    shelf_projection = rack.get_shelf_projection()
+
+    projection_parts.extend(walls_projection)
+    projection_parts.extend(floor_projection)
+    projection_parts.extend(holders_projection)
+    projection_parts.extend(shelf_projection)
+    
+    ## Write assembly scad file
+    #prog_assembly = SCAD_Prog()
+    #prog_assembly.fn = 50
+    #prog_assembly.add(projection_parts)
+    #prog_assembly.write('scad/enclosure_projection.scad')
+        
+    # Write scad file for projections
+    scad_projection_files = []
+
+    parts_names = [
+                    'left_wall',
+                    'right_wall',
+                    'floor',
+                    'left_holder',
+                    'right_holder',
+                    'shelf',
+                    'shelf_bar',
+                  ]
+
+    n = len(parts_names)
+    i = 0
+    #projection_parts.sort()
+    for part in projection_parts:       
+        filename = 'scad/'+parts_names[i]+'.scad'
+        prog_projection = SCAD_Prog()
+        prog_projection.fn = 50
+        prog_projection.add(part)
+        prog_projection.write(filename)
+        scad_projection_files.append(filename)
+        i+=1
+
+    # Create dxf files
+    if create_dxf:
+        for scad_name in scad_projection_files:
+            base_name,ext = os.path.splitext(scad_name)
+            dir_name,file_name = os.path.split(base_name)
+            dxf_name = 'dxf/{0}.dxf'.format(file_name)
+            print '{0} -> {1}'.format(scad_name, dxf_name)
+            subprocess.call(['openscad', '-x', dxf_name, scad_name])
 # Legacy
 #'wall_tabs'        : (1/6,1/3,1/2,2/3,5/6),
 #'wall_tab_width'   : wall_tab_width,

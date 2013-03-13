@@ -15,6 +15,7 @@ class Expresso_Rack(object):
         self.__make_floor()
         self.__make_holders()
         self.__make_shelf()
+        self.__make_shelf_bar()
         self.__make_bracket()
     
     #########################################
@@ -36,6 +37,7 @@ class Expresso_Rack(object):
         x_w = x + 2*wall_x_overhang
         y_w = z
         z_w = thickness
+        y_h = self.params['holder_height']
 
         # Tab and hole (for l-brackets) data for stabilizing the walls
         xz_neg = []
@@ -60,13 +62,12 @@ class Expresso_Rack(object):
                 hole_list.append(hole_data)
 
         # End holes of the walls, for stability rods
-        hole_x_offset = .5*self.params['stability_rod_dia']
-        for i in (-1,1):
-            for j in (-1,1):
-                hole_x = i*j*.5*x_w - j*hole_x_offset
-                hole_y = 0
-                hole_data = (hole_x,hole_y,dia)
-                hole_list.append(hole_data)
+        hole_x_offset = self.params['stability_rod_x_offset']
+        for j in (-1,1):
+            hole_x = j*.5*x_w - j*hole_x_offset
+            hole_y = .5*y_h
+            hole_data = (hole_x,hole_y,dia)
+            hole_list.append(hole_data)
 
         holder_hole_offset = self.params['holder_hole_offset']
 
@@ -208,7 +209,23 @@ class Expresso_Rack(object):
             }
 
         holder_maker = Expresso_Holder(params)
-        self.holder = holder_maker.make()
+        self.left_holder = holder_maker.make()
+        self.right_holder = holder_maker.make()
+
+    def __make_shelf_bar(self):
+        shelf_x_overhang = self.params['x_r_overhang']
+        radius = self.params['corner_radius']
+        x,y,z = self.params['inner_dimensions']
+        x_bar = self.params['x_r_overhang']
+        y_bar = y+2*self.params['wall_thickness']
+        z_bar = self.params['shelf_slot_thickness']
+        hole_list = []
+        for i in [-1,1]:
+            y_shift = i*.25*y
+            hole = (0,y_shift,self.params['wall_hole_dia_tap'])
+            hole_list.append(hole)
+
+        self.shelf_bar = plate_w_holes(x_bar, y_bar, z_bar, hole_list, '',radius)
 
     def __make_shelf(self):
         """
@@ -235,6 +252,12 @@ class Expresso_Rack(object):
         tab_data = (.5*shelf_x_overhang/x_s, shelf_x_overhang, .5*tab_depth, '+')
         xz.append(tab_data)
 
+        for i in [-1,1]:
+            x_shift = -.5*x - .5*shelf_x_overhang
+            y_shift = i*.25*y
+            hole = (x_shift,y_shift,self.params['wall_hole_dia_thru'])
+            hole_list.append(hole)
+
         # Pack data into parameters structure
         params = {
                 'size'      : (x_s, y_s, z_s),
@@ -247,14 +270,16 @@ class Expresso_Rack(object):
         }  
         x_shift = .5*x_s
 
-
-
-        y_shift = self.shelf_y_offset - r*math.cos(theta)
-        
-
-        slot_maker = Cube(size = (2*shelf_x_overhang,1.5,2*thickness))
-        slot_maker = Translate(slot_maker,v=(.5*x_s,-10,0))
-        self.left_wall = Difference([self.left_wall,slot_maker])
+        slot_thickness = self.params['shelf_slot_thickness']
+        for i in range(self.params['shelf_slot_num']):
+            y_shift = self.params['shelf_z_offset']-i*3*slot_thickness
+            slot_maker = Cube(size = (2*shelf_x_overhang,slot_thickness,2*thickness))
+            slot_maker = Translate(slot_maker,v=(.5*x_s,y_shift,0))
+            self.left_wall = Difference([self.left_wall,slot_maker])
+            self.right_wall = Difference([self.right_wall,slot_maker])
+            slot_maker = Translate(slot_maker,v=(-x_s,-slot_thickness,0))
+            self.left_wall = Difference([self.left_wall,slot_maker])
+            self.right_wall = Difference([self.right_wall,slot_maker])
 
         plate_maker = Plate_W_Tabs(params)
         self.shelf = plate_maker.make()
@@ -328,9 +353,9 @@ class Expresso_Rack(object):
         y_h = self.params['holder_height']
         y_shift =  .5*y - .5*thickness + exp_y
         z_shift = .5*thickness + .5*y_h + self.params['holder_z_offset'] + exp_z
-        left_holder = Rotate(self.holder,a=90,v=(1,0,0))
+        left_holder = Rotate(self.left_holder,a=90,v=(1,0,0))
         left_holder = Translate(left_holder,v=(0,y_shift,z_shift))
-        right_holder = Rotate(self.holder,a=90,v=(1,0,0))
+        right_holder = Rotate(self.right_holder,a=90,v=(1,0,0))
         right_holder = Translate(right_holder,v=(0,-y_shift,z_shift))
         if show_holders:
             part_list.append(left_holder)
@@ -339,144 +364,76 @@ class Expresso_Rack(object):
         ##
         # Add shelf to the assembly parts list.
         ##
-        z_shift = 2*25.4-exp_z
+        z_shift = .5*z + .5*thickness + self.params['shelf_z_offset']
         shelf = Translate(self.shelf,v=(0,0,z_shift))
+        x_shift = .5*x+.5*self.params['x_r_overhang']
+        shelf_bar = Translate(self.shelf_bar,v=(-x_shift,0,z_shift-self.params['shelf_slot_thickness']))
         if show_shelf:
             part_list.append(shelf)
-            #part_list.append(self.slot_maker)
+            part_list.append(shelf_bar)
 
         return part_list
 
-    def get_projection(self):
+    def get_walls_projection(self):
+        x,y,z = self.params['inner_dimensions']
+        thickness = self.params['wall_thickness']
+        floor_x_overhang = self.params['x_r_overhang']
+        floor_y_overhang = self.params['y_r_overhang']
+        x_shift = .5*z+thickness
         part_list = []
+
+        #left_wall = Rotate(self.left_wall,a=90,v=(0,0,1))
+        #left_wall = Translate(left_wall,v=(-x_shift,0,0))
+        left_wall = Projection(self.left_wall)
+        #right_wall = Rotate(self.right_wall,a=-90,v=(0,0,1))
+        #right_wall = Translate(right_wall,v=(x_shift,0,0))
+        right_wall = Projection(self.right_wall)
+        
+        part_list.append(left_wall) 
+        part_list.append(right_wall) 
+
         return part_list
 
-# Legacy --------------------------------------------------------------------
+    def get_holders_projection(self):
+        x,y,z = self.params['inner_dimensions']
+        thickness = self.params['wall_thickness']
+        floor_x_overhang = self.params['x_r_overhang']
+        floor_y_overhang = self.params['y_r_overhang']
+        x_shift = .5*z+thickness
+        part_list = []
 
-        #assembly_options= {
-                #'gen_walls' : False,
-                #'explode' : (0,0,0), 
-                #}    
-        #assembly_options.update(kwargs)
-        #explode = assembly_options['explode']
-        #explode_x, explode_y, explode_z = explode
-        ## Load bottom plate of capillary array (i.e., upper shelf of rack)
-        ##upper_shelf = self.upper_shelf
-        ##upper_shelf_assembly = upper_shelf.get_assembly(
-                ##show_top=False,
-                ##show_bottom=True, 
-                ##show_front=False,
-                ##show_back=False,
-                ##show_left=False,
-                ##show_right=False,
-                ##show_standoffs=False,
-                ##show_capillary=False,
-                ##show_sensor=False,
-                ##show_diffuser=False,
-                ##show_diffuser_standoffs=False,
-                ##show_led_pcb=False,
-                ##show_guide_plates=False,
-                ##show_guide_top=False,
-                ##show_clamp=False,
-                ##explode=(0,0,0),
-            ##)  
-        #part_list = []
-        #x,y,z = self.params['floor_dimensions']
-        #wall_x,wall_y,wall_z = self.params['wall_dimensions']
-        #deck_x,deck_y,deck_z = self.params['deck_dimensions']
-        #wall_overhang = self.params['wall_overhang']
-
-        #left_shift_x  =-.5*x+wall_overhang+.5*wall_z
-        #right_shift_x = .5*x-wall_overhang-.5*wall_z
-        #wall_shift_z  = wall_x*.5 + z*.5 + explode_z 
-        #left_wall = Rotate(self.left_wall,v=(0,1,0),a=90)
-        #left_wall = Translate(left_wall,v=(left_shift_x,0,wall_shift_z))
-        #right_wall = Rotate(self.right_wall,v=(0,1,0),a=90)
-        #right_wall = Translate(right_wall,v=(right_shift_x,0,wall_shift_z))
-
-        #floor = self.floor
+        #left_holder = Rotate(self.left_holder,a=90,v=(0,0,1))
+        #left_holder = Translate(left_holder,v=(-x_shift,0,0))
+        left_holder = Projection(self.left_holder)
+        #right_holder = Rotate(self.right_holder,a=-90,v=(0,0,1))
+        #right_holder = Translate(right_holder,v=(x_shift,0,0))
+        right_holder = Projection(self.right_holder)
         
-        #deck_shift_x = left_shift_x+.5*wall_z+explode_x
-        #deck_shift_y = [-1./3.,-1./6.,0.,1./6.,1./3.]
-        #deck_shift_z = wall_shift_z - .25*INCH2MM
-        #for i in range(5): 
-            #deck = Rotate(self.deck,v=(0,1,0),a=90)
-            #deck = Translate(deck,v=(deck_shift_x,deck_shift_y[i]*y,deck_shift_z))
-            #part_list.append(deck)
-        #for i in range(5): 
-            #deck = Rotate(self.deck,v=(0,0,1),a=180)
-            #deck = Rotate(self.deck,v=(0,1,0),a=90)
-            #deck = Translate(deck,v=(-deck_shift_x,deck_shift_y[i]*y,deck_shift_z))
-            #part_list.append(deck)
+        part_list.append(left_holder) 
+        part_list.append(right_holder) 
 
-        #bracket_shift_x = deck_shift_x + .5*self.params['bracket_width']
-        #bracket_shift_y = wall_y*.25
-        #bracket_shift_z = z*.5 + explode_z + .5*INCH2MM
+        return part_list
 
-        #left_bracket_back = Rotate(self.bracket,v=(0,0,1),a=180)
-        #left_bracket_back = Translate(left_bracket_back,v=(bracket_shift_x,bracket_shift_y,bracket_shift_z))
-        #left_bracket_front = Rotate(self.bracket,v=(0,0,1),a=180)
-        #left_bracket_front = Translate(left_bracket_front,v=(bracket_shift_x,-bracket_shift_y,bracket_shift_z))
-        #right_bracket_back = Translate(self.bracket,v=(-bracket_shift_x,bracket_shift_y,bracket_shift_z))
-        #right_bracket_front = Translate(self.bracket,v=(-bracket_shift_x,-bracket_shift_y,bracket_shift_z))
+    def get_floor_projection(self):
+        part_list = []
+        floor = Projection (self.floor)
+        part_list.append(floor)
+        return part_list
 
-        #part_list.append(left_wall)
-        #part_list.append(right_wall)
-        #part_list.append(floor)
-        #if assembly_options['include_brackets']:
-            #part_list.append(left_bracket_front)
-            #part_list.append(left_bracket_back)
-            #part_list.append(right_bracket_front)
-            #part_list.append(right_bracket_back)
+    def get_shelf_projection(self):
+        x,y,z = self.params['inner_dimensions']
+        thickness = self.params['wall_thickness']
+        floor_x_overhang = self.params['x_r_overhang']
+        floor_y_overhang = self.params['y_r_overhang']
 
-        #slot_pos_z, foo = self.params['deck_slot_pos'][0]
-        #slot_shift_z = -slot_pos_z + .5*deck_z
-        #bs_shift_z = self.params['bs_shift_z']
+        part_list = []
+        shelf = Projection (self.shelf)
+        shelf_bar = Projection (self.shelf_bar)
 
-        #if assembly_options['include_enclosure']:
-            #shift_z = deck_shift_z + slot_shift_z + bs_shift_z
-            #enclosure_stl_path = self.params['enclosure_stl_path']
-            #for filename in glob.glob(os.path.join(enclosure_stl_path, "*.stl")):
-                ##print(filename)
-                #for i in range(3):
-                    #part_stl = Import_STL(filename).cmd_str()
-                    #part_stl = Rotate(part_stl,a=-90,v=(0,0,1))
-                    #part_stl = Rotate(part_stl,a=45,v=(1,0,0))
-                    #part_list.append(Translate(part_stl,v=(0,.3*INCH2MM+deck_shift_y[i]*y,shift_z)))
-                #for i in [-1,-2]:
-                    #part_stl = Import_STL(filename).cmd_str()
-                    #part_stl = Rotate(part_stl,a=-90,v=(0,0,1))
-                    #part_stl = Rotate(part_stl,a=45,v=(1,0,0))
-                    #part_list.append(Translate(part_stl,v=(0,.3*INCH2MM+deck_shift_y[i]*y,shift_z)))
+        part_list.append(shelf)
+        part_list.append(shelf_bar)
 
-        ## Load left/right wall
-        #if assembly_options['gen_stl']:
-            #print "generating stls..."
-            ##generate_stl([left_wall],'left_wall')
-            ##generate_stl([right_wall],'right_wall')
-            ##generate_stl([floor],'floor')
-            ##generate_stl([left_bracket_front],'left_bracket_front')
-            ##generate_stl([right_bracket_front],'right_bracket_front')
-            ##generate_stl([left_bracket_back],'left_bracket_back')
-            ##generate_stl([right_bracket_back],'right_bracket_back')
-            #generate_stl([deck],'deck')
-        #return part_list
-    #def __make_capillary_array(self):
-        ##upper_shelf = Arrayed_Enclosure(self.params['arrayed_enclosure_params'])
-        ##upper_shelf.make()
-        ##self.upper_shelf = upper_shelf
-        #return 0
-
-    #def __make_bracket(self):
-        #filename = self.params['bracket_filename']
-        #facet_list = stl_tools.read_stl(filename)
-        #shift_x,foo = stl_tools.get_max_min(facet_list,0)
-        #shift_y,foo = stl_tools.get_max_min(facet_list,1)
-        #shift_z,foo = stl_tools.get_max_min(facet_list,2)
-        #stl_tools.write_stl('stl/bracket.stl', facet_list)
-        #self.bracket = Translate(Import_STL('stl/bracket.stl').cmd_str(),\
-                                 #(-.5*shift_x,-shift_y+.5*.875*INCH2MM,\
-                                  #-.5*shift_z))
+        return part_list
 
 #########################################
 # Holder Class

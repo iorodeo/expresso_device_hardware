@@ -23,16 +23,16 @@ INCH2MM = 25.4
 
 # Inside dimensions enclosure
 x,y,z = 61.4, 8.0*INCH2MM, 0.75*INCH2MM 
-wall_thickness_enc = 3.
+wall_thickness_enc = 3.25
 bottom_x_overhang = 16.3
 bottom_y_overhang = 1.*INCH2MM-5.65 
 
 x_e = x + 2.*wall_thickness_enc + 2.*bottom_x_overhang
-y_e = y + 2.*wall_thickness_enc + 2.*bottom_y_overhang -.1*INCH2MM
+y_e = y + 2.*wall_thickness_enc + 2.*bottom_y_overhang
 z_e = z
 
 #Inside dimensions rack
-wall_thickness_rack = 6.
+wall_thickness_rack = 6.3
 x_r = N*2.5*INCH2MM
 y_r = y_e
 z_r = 6.*INCH2MM
@@ -46,7 +46,7 @@ params = {
         'wall_thickness'        : wall_thickness_rack,
         'wall_thickness_enc'    : wall_thickness_enc,
         'x_r_overhang'          : 1.*INCH2MM,
-        'y_r_overhang'          : 1.*INCH2MM-.1*INCH2MM,
+        'y_r_overhang'          : 1.*INCH2MM-0.15*INCH2MM,
         'corner_radius'         : 1.5,
         'wall_tab_dist'         : 1.25*INCH2MM,
         'wall_tab_width'        : 1.*INCH2MM,
@@ -58,7 +58,7 @@ params = {
         'floor_hole_dia_tap'    : .2010*INCH2MM,
         'holder_height'         : 4.*INCH2MM,
         'holder_slot_size'      : (wall_thickness_enc,.6*x_e),
-        'floor_slot_tol'        : (.1*INCH2MM,.05*INCH2MM),
+        'floor_slot_tol'        : (.02*INCH2MM,.01*INCH2MM),
         'tilt_angle'            : tilt_angle,
         'holder_z_offset'       : 1.*INCH2MM, # from the floors' surface
         'holder_hole_offset'    : (-1.75*INCH2MM,1.75*INCH2MM),

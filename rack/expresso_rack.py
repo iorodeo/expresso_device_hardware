@@ -218,6 +218,7 @@ class Expresso_Rack(object):
         x,y,z = self.params['inner_dimensions']
         x_bar = self.params['x_r_overhang']
         y_bar = y+2*self.params['wall_thickness']
+
         z_bar = self.params['shelf_slot_thickness']
         hole_list = []
         for i in [-1,1]:
@@ -248,8 +249,6 @@ class Expresso_Rack(object):
         hole_list = []
         # Create tab data for xz- face of walls
         tab_data = ((x_s-.5*shelf_x_overhang)/x_s, shelf_x_overhang, tab_depth, '+')
-        xz.append(tab_data)
-        tab_data = (.5*shelf_x_overhang/x_s, shelf_x_overhang, .5*tab_depth, '+')
         xz.append(tab_data)
 
         for i in [-1,1]:

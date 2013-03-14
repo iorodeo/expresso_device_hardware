@@ -11,36 +11,36 @@ $fn = 50;
 projection(cut=true) {
     difference() {
         union() {
-            cube(size=[22.40000, 255.16000, 3.00000], center=true);
+            cube(size=[22.40000, 258.80000, 3.00000], center=true);
             translate(v=[11.20000, 0.00000, 0.00000]) {
-                cube(size=[3.00000, 255.16000, 3.00000], center=true);
+                cube(size=[3.00000, 258.80000, 3.00000], center=true);
             }
             translate(v=[-11.20000, 0.00000, 0.00000]) {
-                cube(size=[3.00000, 255.16000, 3.00000], center=true);
+                cube(size=[3.00000, 258.80000, 3.00000], center=true);
             }
-            translate(v=[0.00000, 127.58000, 0.00000]) {
+            translate(v=[0.00000, 129.40000, 0.00000]) {
                 cube(size=[22.40000, 3.00000, 3.00000], center=true);
             }
-            translate(v=[0.00000, -127.58000, 0.00000]) {
+            translate(v=[0.00000, -129.40000, 0.00000]) {
                 cube(size=[22.40000, 3.00000, 3.00000], center=true);
             }
-            translate(v=[-11.20000, -127.58000, 0.00000]) {
+            translate(v=[-11.20000, -129.40000, 0.00000]) {
                 cylinder(h=3.00000,r1=1.50000,r2=1.50000,center=true);
             }
-            translate(v=[-11.20000, 127.58000, 0.00000]) {
+            translate(v=[-11.20000, 129.40000, 0.00000]) {
                 cylinder(h=3.00000,r1=1.50000,r2=1.50000,center=true);
             }
-            translate(v=[11.20000, -127.58000, 0.00000]) {
+            translate(v=[11.20000, -129.40000, 0.00000]) {
                 cylinder(h=3.00000,r1=1.50000,r2=1.50000,center=true);
             }
-            translate(v=[11.20000, 127.58000, 0.00000]) {
+            translate(v=[11.20000, 129.40000, 0.00000]) {
                 cylinder(h=3.00000,r1=1.50000,r2=1.50000,center=true);
             }
         }
-        translate(v=[0.00000, -61.54000, 0.00000]) {
+        translate(v=[0.00000, -62.30000, 0.00000]) {
             cylinder(h=12.00000,r1=2.55270,r2=2.55270,center=true);
         }
-        translate(v=[0.00000, 61.54000, 0.00000]) {
+        translate(v=[0.00000, 62.30000, 0.00000]) {
             cylinder(h=12.00000,r1=2.55270,r2=2.55270,center=true);
         }
     }

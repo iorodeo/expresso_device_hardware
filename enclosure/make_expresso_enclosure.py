@@ -23,7 +23,7 @@ hole_list = []
 params = {
         # Basic Enclosure parameters
         'inner_dimensions'                   : (x,y,z), 
-        'wall_thickness'                     : 3.35, 
+        'wall_thickness'                     : 3.25, 
         'lid2front_tab_width'                : 7.,
         'lid2side_tab_width'                 : 7., 
         'side2side_tab_width'                : 7.,
